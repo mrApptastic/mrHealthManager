@@ -18,18 +18,26 @@
   <script src="Scripts/angular-animate.min.js"></script>
   <script src="Scripts/angular-route.min.js"></script>
   <script src="Scripts/mrMr.js"></script>
+  <script src="Scripts/dataHussar.js"></script>
 </head>
-<body >
+<body class="mrBlueSky mrFlowIt mrFlow">
 
 
 <div ng-app="healthApp" ng-controller="healthController">
 <div class="mrCon75">
-	<h2 class="mrH1 mrsRetroBlue mrRoddy"><i class="fa fa-user" aria-hidden="true"></i> {{personStats.Name}}</h2>
+	<h2 class="mrH1 mrsSnow mrRoddy"><i class="fa fa-user" aria-hidden="true"></i> {{personStats.Name}}</h2>
 </div>
-<div class="mrCon75 mrEnamel mrPad2">
-	{{personStats}}
+<div class="mrCon75 mrPad2 mrMart2">
+	<div class="mr1 mrShadow mrPad4 mrWhite">
+	<label>Gender:</label>{{personStats.Gender == true ? 'Female' : 'Male'}}<br/>
+	<label>Age:</label>{{calculateAge(personStats.DateOfBirth)}} years<br/>
+	<label>Height:</label>
+	
+	</div>
+	
+	
 </div>
-
+<svg id="BMI_Graph"></svg>
 
 </div>
 
@@ -51,7 +59,18 @@ $scope.personStats = {
 {"Name" : "Fed Flæskesteg", "KCal" : 13},
 {"Name" : "Fed Flæskesteg", "KCal" : 13},
 {"Name" : "Fed Flæskesteg", "KCal" : 13}
-]
+],
+"History" : [
+{"Label" : "1/1 2016", "Value" : 27},
+{"Label" : "1/3 2016", "Value" : 28.5},
+{"Label" : "1/5 2016", "Value" : 27.5},
+{"Label" : "1/7 2016", "Value" : 27.5},
+{"Label" : "1/9 2016", "Value" : 27.5},
+{"Label" : "1/11 2016", "Value" : 27.5},
+{"Label" : "1/1 2017", "Value" : 27.5},
+{"Label" : "1/3 2017", "Value" : 27.5},
+{"Label" : "1/5 2017", "Value" : 27.5}
+] 
 };
 $scope.calculateAge = function (input) {
 	var birthday = new Date(input);
@@ -89,8 +108,9 @@ $scope.calculateTotalConsumption = function () {
 $scope.calculateBMRPlusMinus = function() {
 	return ((parseFloat($scope.calculateBMR()) + parseFloat($scope.calculateTotalActivities())) - parseFloat($scope.calculateTotalConsumption())).toFixed(2);	
 };
-
+var ib = new dataHussar("BMI_Graph",$scope.personStats.History);
 }); 
+
 </script>
 
 </body>
