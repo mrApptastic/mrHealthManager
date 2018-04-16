@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="Styles/fontawesome-all.min.css">
+  <link rel="stylesheet" href="Styles/mrStyle.css">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+  <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  -->
+  <!--
+  <script src='https://use.fontawesome.com/dc7038f777.js'></script>
+  -->
+  <script src="Scripts/angular.min.js"></script>
+  <script src="Scripts/angular-animate.min.js"></script>
+  <script src="Scripts/angular-route.min.js"></script>
+  <script src="Scripts/mrMr.js"></script>
+</head>
+<body >
+
+
+<div ng-app="healthApp" ng-controller="healthController">
+<div class="mrCon75">
+	<h2 class="mrH1 mrsRetroBlue mrRoddy"><i class="fa fa-user" aria-hidden="true"></i> {{personStats.Name}}</h2>
+</div>
+<div class="mrCon75 mrEnamel mrPad2">
+	{{personStats}}
+</div>
+
+
+</div>
+
+<script>
+
+angular.module('healthApp', ["mrMr","ngRoute","ngAnimate"]).controller('healthController', function($scope, $timeout) {
+$scope.personStats = { 
+"Name" : "Test Athlete #1",
+"Height" : 180,
+"Weight" : 89,
+"DateOfBirth" : "1981-04-23",
+"Gender" : false,
+"Activities" : [
+{"Name" : "Løb 3 km", "Minutes" : 60, "KCal" : 23},
+{"Name" : "Afslapning", "Minutes" : 120, "KCal" : 232}
+],
+"Consumption" : [
+{"Name" : "Fed Flæskesteg", "KCal" : 13},
+{"Name" : "Fed Flæskesteg", "KCal" : 13},
+{"Name" : "Fed Flæskesteg", "KCal" : 13},
+{"Name" : "Fed Flæskesteg", "KCal" : 13}
+]
+};
+$scope.calculateAge = function (input) {
+	var birthday = new Date(input);
+	var ageDifMs = Date.now() - birthday.getTime();
+	var ageDate = new Date(ageDifMs);
+	var age = Math.abs(ageDate.getUTCFullYear() - 1970);
+	return isNaN(age) ? 0 : age;
+};
+$scope.calculateBMI = function () {
+	var w = parseFloat($scope.personStats.Weight);
+	var h = parseFloat($scope.personStats.Height / 100);
+	return (w / (Math.pow(h, 2))).toFixed(2);
+};
+$scope.calculateBMR = function () {
+	var a = parseInt($scope.calculateAge($scope.personStats.DateOfBirth));
+	var g = $scope.personStats.Gender != false;
+	var w = parseFloat($scope.personStats.Weight);
+	var h = parseFloat($scope.personStats.Height);	
+	return (g ? (665.09 + (9.56 * w) + (1.84 * h) - (4.67 * a)) : (66.47 + (13.75 * w) + (5.0 * h) - (6.75 * a))).toFixed(2);
+};
+$scope.calculateTotalActivities = function () {
+	var total = 0;
+	for (let i = 0; i < $scope.personStats.Activities.length; i++) {
+		total += $scope.personStats.Activities[i].KCal;
+	}
+	return total;
+};
+$scope.calculateTotalConsumption = function () {
+	var total = 0;
+	for (let i = 0; i < $scope.personStats.Consumption.length; i++) {
+		total += $scope.personStats.Consumption[i].KCal;
+	}
+	return total;
+};
+$scope.calculateBMRPlusMinus = function() {
+	return ((parseFloat($scope.calculateBMR()) + parseFloat($scope.calculateTotalActivities())) - parseFloat($scope.calculateTotalConsumption())).toFixed(2);	
+};
+
+}); 
+</script>
+
+</body>
+</html>
