@@ -25,15 +25,13 @@ var dataHussar = function (element, dataset, settings = {})
 		"labelYSize" : settings.labelYSize ? settings.labelYSize : "initial",
 		"labelXOffset" : settings.labelXOffset ? settings.labelXOffset : -15,
 		"labelYOffset" : settings.labelYOffset ? settings.labelYOffset : 10,
-		"labelXColour" : settings.labelXColour ? settings.labelXColour : "black"
-		/*,
+		"labelXColour" : settings.labelXColour ? settings.labelXColour : "black",
 		"trendLine" : settings.trendLine ? settings.trendLine : false,
-		"trendLineColour" : settings.trendLineColour ? settings.trendLineColour : "red"
+		"trendLineColour" : settings.trendLineColour ? settings.trendLineColour : "red",
 		"trendLineFunction" : settings.trendLineFunction ? settings.trendLineFunction : true,
 		"trendLineTextXOffset" : settings.trendLineTextXOffset ? settings.trendLineTextXOffset : 15,
 		"trendLineTextYOffset" : settings.trendLineTextYOffset ? settings.trendLineTextYOffset : 15,
 		"trendLineTextColour" : settings.trendLineTextColour ? settings.trendLineTextColour : "red"
-		*/
 
 	};
 	dh.init = function() {
@@ -83,7 +81,8 @@ var dataHussar = function (element, dataset, settings = {})
 	};
 	dh.draw = function () {		
 		var output = "";
-		/*
+	/*
+
 		if (1 == 1) {
 			let slope = dh.slp(dh.data);
 			let yInt = dh.yin(dh.data, slope);
@@ -91,25 +90,22 @@ var dataHussar = function (element, dataset, settings = {})
 			let y1 = (dh.set.height - dh.data[ib].Value * (dh.set.height / maxValue));
 			let x2 = ((dh.data.length) * step);
 			let y2 = (dh.set.height - dh.data[ib + 1].Value * (dh.set.height / maxValue));
+			let x1 = 0 //0; //(ib * step);
+			let y1 = (slope * 0) + yInt //(dh.set.height - dh.data[0].Value * (dh.set.height / maxValue));
+			let x2 = (dh.data.length -1); //((dh.data.length) * step);
+			let y2 = (slope * dh.data.length -1) + yInt //(dh.set.height - dh.data[dh.data.length -1].Value * (dh.set.height / maxValue));
 					   output += '<path class="' 
 							  + this.elem.id 
 							  + '_graphLine" d="M ' 
-							  + x1 
-							  + ' ' 
-							  + y1 
-							  + ' l ' 
-							  + (x2 - x1) 
-							  + ' ' 
-							  + (y2 - y1) 
-							  + '" stroke="' 
-							  + dh.set.colour
-							  +'" stroke-width="' 
+@@ -105,11 +107,9 @@ var dataHussar = function (element, dataset, settings = {})
 							  + dh.set.stroke 
 							  + '" fill="none" />'
 		}
 		*/
         var bob = dh.set.yStep;
 		var maxValue = Math.max.apply(Math,dh.data.map(function(o){return o.Value;})); // dh.max();
+		/* Add 1/5 space to the top */
+		maxValue = maxValue * 1.1;
 		var step = dh.set.width / dh.data.length;
 		var dv = Math.ceil(dh.data.length / dh.set.xStep);
 		var divider = dh.data.length > dh.set.xStep ? dv : 1;
@@ -189,6 +185,25 @@ var dataHussar = function (element, dataset, settings = {})
 								  + '" r="5" stroke="' 
 								  + dh.set.dotColour 
 								  + '" stroke-width="1" fill="white" />';
+								  /*
+							output += '<text style="opacity:0;transition: 0.5s;z-index:2;" x="'
+								  + (ib * step + dh.set.valueOffsetX)
+								  +'" y="'
+								  + (dh.set.height - dh.data[ib].Value * (dh.set.height / maxValue) - dh.set.valueOffsetY)
+								  +'" stroke="'
+								  + 'lime'  
+ 								  +'" stroke-width="'
+								  + '0.5em'  
+								  +'" class="' 
+								  + dh.elem.id 
+								  + '_TextLbl" font-family="' 
+								  + dh.set.valueFont 
+								  + '" font-size="' 
+								  + dh.set.valueSize 
+								  + '">'
+								  + dh.data[ib].Value 
+								  +'</text>';
+								  */
 						   output += '<text style="opacity:0;transition: 0.5s;z-index:1;" x="'
 								  + (ib * step + dh.set.valueOffsetX)
 								  +'" y="'
@@ -221,17 +236,20 @@ var dataHussar = function (element, dataset, settings = {})
 	};
 	dh.anit = function () {
 		var points = document.getElementsByClassName(this.elem.id + "_Point");
+		// var textbgs = document.getElementsByClassName(this.elem.id + "_TextLbl");
 		var texts = document.getElementsByClassName(this.elem.id + "_Text");
 		var at = "data-" + dh.elem.id.toLowerCase() + "-index";
 		for (var y = 0; y < points.length; y++) {
 			points[y].addEventListener("mouseover", function(event) {
 				var index = this.getAttribute(at);
 				this.style.strokeWidth = 10;
+				// textbgs[index].style.opacity = 1;
 				texts[index].style.opacity = 1;
 			});
 			points[y].addEventListener("mouseout", function(event) {
 				var index = this.getAttribute(at);
 				this.style.strokeWidth = 1;
+				// textbgs[index].style.opacity = 0;
 				texts[index].style.opacity = 0;
 			});
 		}	
