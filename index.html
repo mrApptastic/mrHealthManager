@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html ng-app="healthApp">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" href="Styles/fontawesome-all.min.css">
-  <link rel="stylesheet" href="Styles/mrStyle.css">
-  <link rel="stylesheet" href="Styles/mrStyle.css">
+<head ng-controller="locationController">
+  <title>Hej hej</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="Styles/fontawesome-all.min.css" />
+  <link rel="stylesheet" href="Styles/textAngular.css" />
+  <link rel="stylesheet" href="Styles/mrStyle.css" />
+  <link rel="stylesheet" href="Styles/styles.css" />
+  <style ng-bind="getStyles()"></style>
   <script src="Scripts/angular.min.js"></script>
   <script src="Scripts/angular-animate.min.js"></script>
   <script src="Scripts/angular-route.min.js"></script>
@@ -19,109 +21,25 @@
   <script src="Scripts/mrToolBox.js"></script>
   <script src="Scripts/dataHussar.js"></script>
   <script src="Scripts/captainCanvas.js"></script> 
-  <script src="Scripts/HealthModule.js"></script> 
+  <script src="Scripts/scripts.js"></script> 
 </head>
-<body class="mrBlueSky mrFlowIt mrFlow">
-
-
-<div ng-controller="healthController">
-<div class="mrCon75">
-	<h2 class="mrH1 mrsSnow mrRoddy"><i class="fa fa-user" aria-hidden="true"></i> {{personStats.Name}}</h2>
-</div>
-<div class="mrCon75 mrPad2 mrMart2">
-	<div class="mr1 mrShadow mrPad4 mrWhite">
-	<label>Gender:</label>{{personStats.Gender == true ? 'Female' : 'Male'}}<br/>
-	<label>Age:</label>{{calculateAge(personStats.DateOfBirth)}} years<br/>
-	<label>Height:</label>
+<body>
+	<header>
 	
-	</div>
-	
-	
-</div>
-<div class="mrCon75 mrPad2 mrMart2">
-<div>
-<canvas id="cpt"></canvas>
-<div id="tls"></div>
-<svg id="BMI_Graph" class="mrWhite"></svg>
-</div>
-
-</div>
-</div>
-
-<script>
-
-var ib = new captainCanvas("cpt","tls");
-
-angular.module('healthApp', ["mrMr","ngRoute","ngAnimate", "HealthModule"]).controller('healthController', function($scope, $timeout) {
-
-$scope.personStats = { 
-"Name" : "Test Athlete #1",
-"Height" : 180,
-"Weight" : 89,
-"DateOfBirth" : "1981-04-23",
-"Gender" : false,
-"Activities" : [
-{"Name" : "Løb 3 km", "Minutes" : 60, "KCal" : 23},
-{"Name" : "Afslapning", "Minutes" : 120, "KCal" : 232}
-],
-"Consumption" : [
-{"Name" : "Fed Flæskesteg", "KCal" : 13},
-{"Name" : "Fed Flæskesteg", "KCal" : 13},
-{"Name" : "Fed Flæskesteg", "KCal" : 13},
-{"Name" : "Fed Flæskesteg", "KCal" : 13}
-],
-"History" : [
-{"Label" : "1/1 2016", "Value" : 27},
-{"Label" : "1/3 2016", "Value" : 28.5},
-{"Label" : "1/5 2016", "Value" : 27.5},
-{"Label" : "1/7 2016", "Value" : 27.5},
-{"Label" : "1/9 2016", "Value" : 27.5},
-{"Label" : "1/11 2016", "Value" : 27.5},
-{"Label" : "1/1 2017", "Value" : 27.5},
-{"Label" : "1/3 2017", "Value" : 27.5},
-{"Label" : "1/5 2017", "Value" : 27.5}
-] 
-};
-$scope.calculateAge = function (input) {
-	var birthday = new Date(input);
-	var ageDifMs = Date.now() - birthday.getTime();
-	var ageDate = new Date(ageDifMs);
-	var age = Math.abs(ageDate.getUTCFullYear() - 1970);
-	return isNaN(age) ? 0 : age;
-};
-$scope.calculateBMI = function () {
-	var w = parseFloat($scope.personStats.Weight);
-	var h = parseFloat($scope.personStats.Height / 100);
-	return (w / (Math.pow(h, 2))).toFixed(2);
-};
-$scope.calculateBMR = function () {
-	var a = parseInt($scope.calculateAge($scope.personStats.DateOfBirth));
-	var g = $scope.personStats.Gender != false;
-	var w = parseFloat($scope.personStats.Weight);
-	var h = parseFloat($scope.personStats.Height);	
-	return (g ? (665.09 + (9.56 * w) + (1.84 * h) - (4.67 * a)) : (66.47 + (13.75 * w) + (5.0 * h) - (6.75 * a))).toFixed(2);
-};
-$scope.calculateTotalActivities = function () {
-	var total = 0;
-	for (let i = 0; i < $scope.personStats.Activities.length; i++) {
-		total += $scope.personStats.Activities[i].KCal;
-	}
-	return total;
-};
-$scope.calculateTotalConsumption = function () {
-	var total = 0;
-	for (let i = 0; i < $scope.personStats.Consumption.length; i++) {
-		total += $scope.personStats.Consumption[i].KCal;
-	}
-	return total;
-};
-$scope.calculateBMRPlusMinus = function() {
-	return ((parseFloat($scope.calculateBMR()) + parseFloat($scope.calculateTotalActivities())) - parseFloat($scope.calculateTotalConsumption())).toFixed(2);	
-};
-var ib = new dataHussar("BMI_Graph",$scope.personStats.History);
-}); 
-
-</script>
-
+	</header>
+	<nav id="navigation" class="mrH3 mrBounceInDown">
+		<ul>
+			<li class="mrShrink">
+				<a href="#/!">Overblik</a>
+			</li>
+			<li class="mrShrink">
+				<a href="#!diet">Kostplanl&aelig;ning</a>
+			</li>
+			<li class="mrShrink">
+				<a href="#!activities">Aktiviteter</a>
+			</li>
+		</ul>
+	</nav>
+	<section ng-view></section>
 </body>
 </html>

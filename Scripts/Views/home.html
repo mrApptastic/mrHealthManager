@@ -1,0 +1,32 @@
+<div class="mrCon75">
+    <h2 class="mrH1 mrsSnow mrRoddy mrMart2 mrMarb2"><i class="fa fa-user" aria-hidden="true"></i> {{personStats.Name}}</h2>
+    <div class="mr1 mrShadow mrWhite mrMart2 mrMarb2">
+    	<div class="mr3 mrTxtC mrPadt2 mrPadb2">
+    		<label>Gender:</label>{{personStats.Gender == true ? 'Female' : 'Male'}}<br/>
+    		<label>Age:</label>{{personStats.DateOfBirth | ageFilter}} years<br/>
+    	</div>
+    	<div class="mr3 mrTxtC mrPadt2 mrPadb2">
+    		<label>Height:</label> {{personStats.Height}} cm<br/>
+    		<label>Weight:</label> {{personStats.Weight}} kg<br/>
+    	</div>
+    	<div class="mr3 mrTxtC mrPadt2 mrPadb2">
+    		<label>BMI:</label>{{personStats.BMI}}<br/>
+    		<label>BMR:</label>{{personStats.BMR}} kCal<br/>
+    	</div>
+    </div>
+    <div class="mr1">
+        <div class="mr2 mrOrange">f</div>
+        <div class="mr2 mrPurple">f</div>
+    </div>
+    <div class="mr1">
+        <div class="mr2 mrMart2 mrMarb2">
+            <div id="BMI_Box" class="mrOfsXScrl">
+                <h3 class="mrH3 mrWhite ">BMI-Udvikling</h3>
+              <svg id="BMI_Graph" class="mr100PW mrWhite"></svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
