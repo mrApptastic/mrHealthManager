@@ -216,6 +216,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .mrTxtC { text-align: center; }
 .mrTxtL { text-align: left; }
 .mrTxtR { text-align: right; }
+.mr25PW { width: 25%; }
+.mr50PW { width: 50%; }
 .mr100PW { width: 100%; }
 .mr100PH { height: 100%; }
 .mrZ1000 { z-index: 1000; }

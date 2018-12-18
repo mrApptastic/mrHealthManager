@@ -1,21 +1,25 @@
 <div class="mrCon75 mrWhite mrPad2 mrMart2 mrEnamel">
 	<input type="number" ng-model="selectedQuantity"/>
-	<select ng-model="selectedFood" ng-options="f.Name for f in food">	
+	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes">
+		<option value=""></option>
 	</select>
-	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories * selectedQuantity })">Add</button>
+	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id }"></select>
+	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories })">Add</button>
 	<table class="mr100PW" ng-init="FoodList = []">
 		<thead>
 			<tr>
-				<th>Quantity</th>
-				<th>Type</th>
-				<th>kCal</th>
+				<th class="mrTxtC mr25PW">Kvantitet (g)</th>
+				<th class="mrTxtC mr25PW">Type</th>
+				<th class="mrTxtC mr25PW">kCal</th>
+				<th class="mr25PW"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="s in FoodList">
-				<td ng-bind="s.Quantity"></td>
-				<td ng-bind="s.Name"></td>
-				<td ng-bind="s.kCal"></td>
+				<td class="mrTxtC"><input type="number" ng-model="s.Quantity"/></td>
+				<td class="mrTxtC" ng-bind="s.Name"></td>
+				<td class="mrTxtC" ng-bind="(s.kCal * s.Quantity).toFixed(2)"></td>
+				<td><button ng-click="FoodList.splice($index, 1)">Fjern</button></td>
 			</tr>
 		</tbody>
 	</table>
