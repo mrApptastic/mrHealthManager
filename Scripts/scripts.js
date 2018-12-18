@@ -1,5 +1,7 @@
 ﻿var app = angular.module("healthApp", ["ngRoute", "ngAnimate", "mrMr"]);
 
+var appVersion = 14;
+
 app.run(['$rootScope', function ($rootScope) {
     // $rootScope.msg = mesageService.message(", Glasgow ");
 }]);
@@ -7,15 +9,15 @@ app.run(['$rootScope', function ($rootScope) {
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "Scripts/Views/home.html",
+        templateUrl : "Scripts/Views/home.html?v=" + appVersion,
         controller: "mainController"    
     })
     .when("/diet", {
-        templateUrl : "Scripts/Views/diet.html",
+        templateUrl : "Scripts/Views/diet.html?v=" + appVersion,
         controller : "dietController"
     })
     .when("/activities", {
-        templateUrl : "Scripts/Views/activities.html",
+        templateUrl : "Scripts/Views/activities.html?v=" + appVersion,
         controller : "activitiesController"
     })
 }]);
