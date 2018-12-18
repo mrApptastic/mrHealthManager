@@ -1,7 +1,23 @@
-<ul>
-	<li ng-repeat="f in foodTypes">{{f.Type}}
-	<ul>
-		<li ng-repeat="m in food.find(x => x.Name === 'Aborre'">{{m.Name}}</li>
-	</ul>
-	</li>
-</ul>
+<div class="mrCon75 mrWhite mrPad2 mrMart2 mrEnamel">
+	<input type="number" ng-model="selectedQuantity"/>
+	<select ng-model="selectedFood" ng-options="f.Name for f in food">	
+	</select>
+	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories * selectedQuantity })">Add</button>
+	<table class="mr100PW" ng-init="FoodList = []">
+		<thead>
+			<tr>
+				<th>Quantity</th>
+				<th>Type</th>
+				<th>kCal</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="s in FoodList">
+				<td ng-bind="s.Quantity"></td>
+				<td ng-bind="s.Name"></td>
+				<td ng-bind="s.kCal"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

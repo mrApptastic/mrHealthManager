@@ -1,6 +1,6 @@
 ﻿var app = angular.module("healthApp", ["ngRoute", "ngAnimate", "mrMr"]);
 
-var appVersion = 14;
+var appVersion = 1;
 
 app.run(['$rootScope', function ($rootScope) {
     // $rootScope.msg = mesageService.message(", Glasgow ");
@@ -78,6 +78,11 @@ app.service('cssService', [function() {
                 body {
                     background: lime;
                 }
+            `;
+        }
+        else if (loc === "/diet") {
+            return `
+
             `;
         }
         else {

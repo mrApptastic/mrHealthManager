@@ -5,33 +5,33 @@ var mrMr = angular.module('mrMr', []);
 			restrict : "E",
 			template : "<span ng-mouseover='getCursor($event)' ng-click='sort()'><i ng-class='getIcon()' aria-hidden='true'></i>&nbsp;{{label}}</span>",
 			scope : {
-				t: "@",
-				b: "@",
-				i: "@",
-				o: "@",
-				d: "@"
+				lbl: "@",
+				srt: "@",
+				icn: "@",
+				ord: "@",
+				drt: "@"
 			},
 			link: function(scope) {
-				var sort = scope.o ? scope.o.toString() : "sortOrder";
-				var dir = scope.d ? scope.d.toString() : "sortDirection";
+				var sort = scope.ord ? scope.ord.toString() : "sortOrder";
+				var dir = scope.drt ? scope.drt.toString() : "sortDirection";
 
-				scope.label = scope.t;			
+				scope.label = scope.lbl;			
 				scope.sort = function () {
-					if (scope.$parent[sort] == scope.b) {
+					if (scope.$parent[sort] == scope.srt) {
 						scope.$parent[dir] = !scope.$parent[dir];
 					}
-					scope.$parent[sort] = scope.b;
+					scope.$parent[sort] = scope.srt;
 				};
 				scope.getCursor = function ($event) {
 					$event.target.style.cursor = "pointer";
 				};
 				scope.getIcon = function () {
 					var icon = true;
-					if (scope.i) {
+					if (scope.icn) {
 						icon = false;
 					}
 					if (icon) {
-						if (scope.$parent[sort] == scope.b) {
+						if (scope.$parent[sort] == scope.srt) {
 							if (scope.$parent[dir] == true) {
 								return "fa fa-sort-desc";
 							}
@@ -62,7 +62,7 @@ var mrMr = angular.module('mrMr', []);
         }
     });
 
-    mrMr.directive("mrSelect", function () {
+    mrMr.directive("mrselect", function () {
         return {
             restrict: "E",
             template: '<span style="position: relative;" ng-mouseenter="theKingIsHere = true" ng-mouseleave="theKingIsHere = false">' +

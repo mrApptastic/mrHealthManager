@@ -11,6 +11,11 @@
 }
 
 body {
+    background: #67a9a8;
+
+
+    background-repeat: no-repeat;
+    /*
 background: url('../Media/Cloudy5.png') no-repeat center left, 
             url('../Media/Cloudy4.png') no-repeat center left, 
             url('../Media/Cloudy3.png') no-repeat center left, 
@@ -30,6 +35,7 @@ background: url('../Media/Cloudy5.png') no-repeat center left,
     animation-direction: alternate;
     animation-play-state: running;
 background-attachment:fixed;
+*/
 }
 
 #navigation {
