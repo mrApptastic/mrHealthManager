@@ -1,9 +1,11 @@
 <div class="mrCon75 mrWhite mrPad2 mrMart2 mrEnamel">
+	<div class="">
+	<input type="text" ng-model="searchFood" />
 	<input type="number" ng-model="selectedQuantity"/>
 	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes">
 		<option value=""></option>
 	</select>
-	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id }"></select>
+	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id } | filter : searchFood"></select>
 	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories })">Add</button>
 	<table class="mr100PW" ng-init="FoodList = []">
 		<thead>
@@ -23,5 +25,6 @@
 			</tr>
 		</tbody>
 	</table>
+	</div>
 </div>
 

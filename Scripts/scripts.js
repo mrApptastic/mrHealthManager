@@ -124,6 +124,89 @@ app.service('dataService', [function() {
             ] 
         };
     };
+    this.getActivities = function () {
+        return [{
+        "Id": 1,
+        "Name": "Husarbejde",
+        "kCal": 0.001033333
+    },
+    {
+        "Id": 2,
+        "Name": "Gymnastik",
+        "kCal": 0.001066667
+    },
+    {
+        "Id": 3,
+        "Name": "Bordtennis",
+        "kCal": 0.001133333
+    },
+    {
+        "Id": 4,
+        "Name": "Gang",
+        "kCal": 0.001383333
+    },
+    {
+        "Id": 5,
+        "Name": "Bowling",
+        "kCal": 0.001566667
+    },
+    {
+        "Id": 6,
+        "Name": "Badminton",
+        "kCal": 0.001633333
+    },
+    {
+        "Id": 7,
+        "Name": "Tennis",
+        "kCal": 0.001816667
+    },
+    {
+        "Id": 8,
+        "Name": "Rulleskøjteløb",
+        "kCal": 0.001883333
+    },
+    {
+        "Id": 9,
+        "Name": "Svømning. Crawl",
+        "kCal": 0.002133333
+    },
+    {
+        "Id": 10,
+        "Name": "Løb. Lavt Tempo",
+        "kCal": 0.002233333
+    },
+    {
+        "Id": 11,
+        "Name": "Basketball",
+        "kCal": 0.0023
+    },
+    {
+        "Id": 12,
+        "Name": "March",
+        "kCal": 0.002383333
+    },
+    {
+        "Id": 13,
+        "Name": "Svømning. Bryst",
+        "kCal": 0.0027
+    },
+    {
+        "Id": 14,
+        "Name": "Sjipning",
+        "kCal": 0.0027
+    },
+    {
+        "Id": 15,
+        "Name": "Løb. Moderat Tempo",
+        "kCal": 0.003233333
+    },
+    {
+        "Id": 16,
+        "Name": "Judo",
+        "kCal": 0.003266667
+    }
+];
+    };
     this.getFoodTypes = function () {
         return [{
         "Id": 1,

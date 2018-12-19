@@ -1,5 +1,33 @@
-﻿/* CSS Animations  */
+body {
+    --main-bg-color: #67a9a8;
+}
 
+/* Fonts */
+@font-face { 
+    font-family: 'Monty'; 
+    src: url('../webfonts/Montserrat-Regular.woff') 
+        format('woff'), 
+        url('../media/fonts/Montserrat-Regular.ttf') 
+        format('truetype'); 
+}
+
+@font-face { 
+    font-family: 'Seaside'; 
+    src: url('../webfonts/SEASRN.woff') 
+        format('woff'), 
+        url('../media/fonts/SEASRN.ttf') 
+        format('truetype'); 
+}
+
+body {
+    font-family: 'Monty';  
+}
+
+.seaSide {
+    font-family: 'Seaside';   
+}
+
+/* CSS Animations  */
 @-webkit-keyframes backAndForth {
     from {background-position:left;}
     to {background-position:right;}
@@ -11,10 +39,8 @@
 }
 
 body {
-    background: #67a9a8;
+    background: var(--main-bg-color);
 
-
-    background-repeat: no-repeat;
     /*
 background: url('../Media/Cloudy5.png') no-repeat center left, 
             url('../Media/Cloudy4.png') no-repeat center left, 
