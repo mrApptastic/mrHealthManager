@@ -12,6 +12,10 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl : "Scripts/Views/home.html?v=" + appVersion,
         controller: "mainController"    
     })
+	.when("/planning", {
+        templateUrl : "Scripts/Views/planning.html?v=" + appVersion,
+        controller : "planningController"
+    })
     .when("/diet", {
         templateUrl : "Scripts/Views/diet.html?v=" + appVersion,
         controller : "dietController"
@@ -42,6 +46,21 @@ setTimeout(function () {
     drawBMIGraph(document.getElementById("BMI_Box").offsetWidth);
 }, 0);
 
+
+}]);
+
+app.controller("planningController", ['$scope', '$rootScope', 'dataService', 'calcService', function ($scope, $rootScope, dataService, calcService) {
+$scope.personStats = dataService.getPerson(1,'2018-12-17');
+$scope.foodTypes = dataService.getFoodTypes();
+$scope.food = dataService.getFood();
+$scope.activities = dataService.getActivities();
+$scope.getTotal = function (arr, obj) {
+	var total = 0;
+	for (let i = 0; i < arr.length; i++) {
+		total += parseFloat(arr[i][obj]);
+	}
+	return total.toFixed(2);
+};
 
 }]);
 
@@ -12178,8 +12197,9 @@ app.service('calcService', [function() {
         var h = parseFloat(Height / 100);
         return (w / (Math.pow(h, 2))).toFixed(2);
     };
-    this.calculateBMR = function (DateOfBirth, Gender, Weight, Height) {
-        var a = parseInt(this.calculateAge(DateOfBirth));
+    this.calculateBMR = function (Age, Gender, Weight, Height) {
+
+        var a = typeof(Age) === "number" ? parseInt(Age) : parseInt(this.calculateAge(Age));
         var g = Gender != false;
         var w = parseFloat(Weight);
         var h = parseFloat(Height);  
@@ -12201,7 +12221,7 @@ app.filter('BMIFilter', ['calcService', function (calcService) {
 }]);
 
 app.filter('BMRFilter', ['calcService', function (calcService) {
-    return function (DateOfBirth, Gender, Weight, Height) {
-        return calcService.calculateBMR(DateOfBirth, Gender, Weight, Height);
+    return function (Age, Gender, Weight, Height) {
+        return calcService.calculateBMR(Age, Gender, Weight, Height);
     };
 }]);

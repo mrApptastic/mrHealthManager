@@ -1,0 +1,96 @@
+<div class="mrCon90 mrMart2">
+	<div class="mr1">
+		<div class="mrEnamel mrWhite mrPad4 mrMar2">
+			<h2 class="h2 seaSide">Persondata</h2>
+			<label>
+				Navn: 
+			</label>
+			<input type="text" ng-model="testPerson.Name" ng-init="testPerson.Name = personStats.Name" />
+			<br/>
+			<label>
+				Alder: 
+			</label>
+			<input type="number" ng-model="testPerson.Age" ng-init="testPerson.Age = (personStats.DateOfBirth | ageFilter)" />
+			<br/>
+			<label ng-init="testPerson.Gender = (personStats.Gender == true).toString()">
+				K&oslash;n: 
+			</label>
+				<input type="radio" ng-model="testPerson.Gender" value="true">Kvinde
+				<input type="radio" ng-model="testPerson.Gender" value="false">Mand
+			<br/>
+			<label>
+				H&oslash;jde: 
+			</label>
+			<input type="number" ng-model="testPerson.Height" ng-init="testPerson.Height = personStats.Height" />
+			<br/>
+			<label>
+				V&aelig;gt: 
+			</label>
+			<input type="number" ng-model="testPerson.Weight" ng-init="testPerson.Weight = personStats.Weight" />
+			<br/>
+			<label>BMI:</label>&nbsp;{{testPerson.Weight | BMIFilter : testPerson.Height }}<br/>
+    		<label>BMR:</label>&nbsp;{{thisBMR = (testPerson.Age | BMRFilter : testPerson.Gender : testPerson.Weight : testPerson.Height)}} kCal<br/>
+			<label>Totalt Indtag:</label>&nbsp;{{TotalConsumed = getTotal(FoodList,'Total')}} kCal<br/>
+			<label>Total Forbr&aelig;nding:</label>&nbsp;{{TotalBurned = (getTotal(FoodList,'Total') + parseFloat(thisBMR))}} kCal<br/>
+			<label>I alt:</label>&nbsp;{{TotalConsumed - TotalBurned}} kCal
+		</div>
+	</div>
+	<div class="mr2">
+		<div class="mrEnamel mrWhite mrPad4 mrMar2">
+					<h2 class="h2 seaSide">Indtag</h2>
+	<input type="text" ng-model="searchFood" />
+	<input type="number" ng-model="selectedQuantity"/>
+	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes">
+		<option value=""></option>
+	</select>
+	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id } | filter : searchFood"></select>
+	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories })">Add</button>
+	<table class="mr100PW" ng-init="FoodList = []">
+		<thead>
+			<tr>
+				<th class="mrTxtC mr25PW">Kvantitet (g)</th>
+				<th class="mrTxtC mr25PW">Type</th>
+				<th class="mrTxtC mr25PW">kCal</th>
+				<th class="mr25PW"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="s in FoodList">
+				<td class="mrTxtC"><input type="number" ng-model="s.Quantity"/></td>
+				<td class="mrTxtC" ng-bind="s.Name"></td>
+				<td class="mrTxtC" ng-bind="s.Total = (s.kCal * s.Quantity).toFixed(2)"></td>
+				<td><button ng-click="FoodList.splice($index, 1)">Fjern</button></td>
+			</tr>
+		</tbody>
+	</table>
+		</div>
+
+	</div>
+	<div class="mr2">
+		<div class="mrEnamel mrWhite mrPad4 mrMar2">
+					<h2 class="h2 seaSide">Forbr&aelig;nding</h2>
+	<select ng-model="selectedActivity" ng-options="a.Name for a in activities">
+		<option value=""></option>
+	</select>
+		<table class="mr100PW" ng-init="FoodList = []">
+		<thead>
+			<tr>
+				<th class="mrTxtC mr25PW">Kvantitet (g)</th>
+				<th class="mrTxtC mr25PW">Type</th>
+				<th class="mrTxtC mr25PW">kCal</th>
+				<th class="mr25PW"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="s in FoodList">
+				<td class="mrTxtC"><input type="number" ng-model="s.Quantity"/></td>
+				<td class="mrTxtC" ng-bind="s.Name"></td>
+				<td class="mrTxtC" ng-bind="(s.kCal * s.Quantity).toFixed(2)"></td>
+				<td><button ng-click="FoodList.splice($index, 1)">Fjern</button></td>
+			</tr>
+		</tbody>
+	</table>
+		</div>
+	</div>
+</div>
+
