@@ -58,6 +58,8 @@ setTimeout(function () {
 }]);
 
 app.controller("planningController", ['$scope', '$rootScope', 'dataService', 'calcService', function ($scope, $rootScope, dataService, calcService) {
+$scope.activityOrder = "Time";
+$scope.activityDirection = false;
 $scope.personStats = dataService.getPerson(1,'2018-12-17');
 $scope.foodTypes = dataService.getFoodTypes();
 $scope.food = dataService.getFood();

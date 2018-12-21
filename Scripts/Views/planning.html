@@ -78,15 +78,15 @@
 		<table class="mr100PW" ng-init="ActivityList = []">
 		<thead>
 			<tr>
-				<th class="mrTxtC mr20PW">Tid (m)</th>
-				<th class="mrTxtC mr20PW">km/t</th>
-				<th class="mrTxtC mr20PW">Type</th>
-				<th class="mrTxtC mr20PW">kCal</th>
+				<th class="mrTxtC mr20PW"><mrsort lbl="Tid (m)" srt="Time" ord="activityOrder" drt="activityDirection"></mrsort></th>
+				<th class="mrTxtC mr20PW"><mrsort lbl="km/t" srt="Speed" ord="activityOrder" drt="activityDirection"></mrsort></th>
+				<th class="mrTxtC mr20PW"><mrsort lbl="Type" srt="Name" ord="activityOrder" drt="activityDirection"></mrsort></th>
+				<th class="mrTxtC mr20PW"><mrsort lbl="kCal" srt="Total" ord="activityOrder" drt="activityDirection"></mrsort></th>
 				<th class="mr20PW"></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="a in ActivityList">
+			<tr ng-repeat="a in ActivityList | orderBy : activityOrder : activityDirection">
 				<td class="mrTxtC"><input type="number" ng-model="a.Time"/></td>
 				<td class="mrTxtC"><input type="number" ng-model="a.Speed"/></td>
 				<td class="mrTxtC" ng-bind="a.Name"></td>
