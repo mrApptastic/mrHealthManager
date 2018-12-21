@@ -12,7 +12,8 @@ app.config(['$provide', '$routeProvider', function($provide, $routeProvider) {
 
         return function (exception, cause) {
             $delegate(exception, cause);
-            alert('Totalt øv fejl!');
+
+            alert("Totalt øv fejl!\r\n\r\nException:\r\n" + exception + "\r\n\r\nCause:\r\n" + cause);
         };
     });
 

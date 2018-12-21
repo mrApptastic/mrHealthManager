@@ -1,7 +1,7 @@
 <div class="mrCon90 mrMart2">
 	<div class="mr1">
 		<div class="mrEnamel mrWhite mrPad4 mrMar2">
-			<h2 class="h2 seaSide">Persondata</h2>
+			<h2 class="mrH3 seaSide">Persondata</h2>
 			<label>
 				Navn: 
 			</label>
@@ -37,7 +37,7 @@
 	</div>
 	<div class="mr2">
 		<div class="mrEnamel mrWhite mrPad4 mrMar2">
-					<h2 class="h2 seaSide">Indtag</h2>
+					<h2 class="mrH3 seaSide">Indtag</h2>
 	<input type="text" ng-model="searchFood" />
 	<input type="number" ng-model="selectedQuantity"/>
 	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes | orderBy : 'Type'">
@@ -68,7 +68,7 @@
 	</div>
 	<div class="mr2">
 		<div class="mrEnamel mrWhite mrPad4 mrMar2">
-					<h2 class="h2 seaSide">Forbr&aelig;nding</h2>
+					<h2 class="mrH3 seaSide">Forbr&aelig;nding</h2>
 		<input type="number" ng-model="selectedTime"/>
 		<input type="number" ng-model="selectedSpeed"/>
 	<select ng-model="selectedActivity" ng-options="a.Name for a in activities | orderBy : 'Name'">
@@ -88,7 +88,7 @@
 		<tbody>
 			<tr ng-repeat="a in ActivityList | orderBy : activityOrder : activityDirection">
 				<td class="mrTxtC"><input type="number" ng-model="a.Time"/></td>
-				<td class="mrTxtC"><input type="number" ng-model="a.Speed"/></td>
+				<td class="mrTxtC"><input ng-show="a.UseKmH" type="number" ng-model="a.Speed"/></td>
 				<td class="mrTxtC" ng-bind="a.Name"></td>
 				<td class="mrTxtC" ng-bind="a.Total = (a.kCal * a.Time * a.Speed).toFixed(2)"></td>
 				<td><button ng-click="ActivityList.splice($index, 1)">Fjern</button></td>
