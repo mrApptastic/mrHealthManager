@@ -145,86 +145,138 @@ app.service('dataService', [function() {
     };
     this.getActivities = function () {
         return [{
-        "Id": 1,
-        "Name": "Husarbejde",
-        "kCal": 0.001033333
-    },
-    {
-        "Id": 2,
-        "Name": "Gymnastik",
-        "kCal": 0.001066667
-    },
-    {
-        "Id": 3,
-        "Name": "Bordtennis",
-        "kCal": 0.001133333
-    },
-    {
-        "Id": 4,
-        "Name": "Gang",
-        "kCal": 0.001383333
-    },
-    {
-        "Id": 5,
-        "Name": "Bowling",
-        "kCal": 0.001566667
-    },
-    {
-        "Id": 6,
-        "Name": "Badminton",
-        "kCal": 0.001633333
-    },
-    {
-        "Id": 7,
-        "Name": "Tennis",
-        "kCal": 0.001816667
-    },
-    {
-        "Id": 8,
-        "Name": "Rulleskøjteløb",
-        "kCal": 0.001883333
-    },
-    {
-        "Id": 9,
-        "Name": "Svømning. Crawl",
-        "kCal": 0.002133333
-    },
-    {
-        "Id": 10,
-        "Name": "Løb. Lavt Tempo",
-        "kCal": 0.002233333
-    },
-    {
-        "Id": 11,
-        "Name": "Basketball",
-        "kCal": 0.0023
-    },
-    {
-        "Id": 12,
-        "Name": "March",
-        "kCal": 0.002383333
-    },
-    {
-        "Id": 13,
-        "Name": "Svømning. Bryst",
-        "kCal": 0.0027
-    },
-    {
-        "Id": 14,
-        "Name": "Sjipning",
-        "kCal": 0.0027
-    },
-    {
-        "Id": 15,
-        "Name": "Løb. Moderat Tempo",
-        "kCal": 0.003233333
-    },
-    {
-        "Id": 16,
-        "Name": "Judo",
-        "kCal": 0.003266667
-    }
-];
+            "Id": 1,
+            "Name": "Husarbejde",
+            "kCal": 0.001033333,
+            "UseKmH": false
+        },
+        {
+            "Id": 2,
+            "Name": "Gymnastik",
+            "kCal": 0.001066667,
+            "UseKmH": false
+        },
+        {
+            "Id": 3,
+            "Name": "Bordtennis",
+            "kCal": 0.001133333,
+            "UseKmH": false
+        },
+        {
+            "Id": 4,
+            "Name": "Gang",
+            "kCal": 0.001383333,
+            "UseKmH": false
+        },
+        {
+            "Id": 5,
+            "Name": "Bowling",
+            "kCal": 0.001566667,
+            "UseKmH": false
+        },
+        {
+            "Id": 6,
+            "Name": "Badminton",
+            "kCal": 0.001633333,
+            "UseKmH": false
+        },
+        {
+            "Id": 7,
+            "Name": "Tennis",
+            "kCal": 0.001816667,
+            "UseKmH": false
+        },
+        {
+            "Id": 8,
+            "Name": "Rulleskøjteløb",
+            "kCal": 0.001883333,
+            "UseKmH": false
+        },
+        {
+            "Id": 9,
+            "Name": "Svømning. Crawl",
+            "kCal": 0.002133333,
+            "UseKmH": false
+        },
+        {
+            "Id": 10,
+            "Name": "Løb. Lavt Tempo",
+            "kCal": 0.002233333,
+            "UseKmH": false
+        },
+        {
+            "Id": 11,
+            "Name": "Basketball",
+            "kCal": 0.0023,
+            "UseKmH": false
+        },
+        {
+            "Id": 12,
+            "Name": "March",
+            "kCal": 0.002383333,
+            "UseKmH": false
+        },
+        {
+            "Id": 13,
+            "Name": "Svømning. Bryst",
+            "kCal": 0.0027,
+            "UseKmH": false
+        },
+        {
+            "Id": 14,
+            "Name": "Sjipning",
+            "kCal": 0.0027,
+            "UseKmH": false
+        },
+        {
+            "Id": 15,
+            "Name": "Løb. Moderat Tempo",
+            "kCal": 0.003233333,
+            "UseKmH": false
+        },
+        {
+            "Id": 16,
+            "Name": "Judo",
+            "kCal": 0.003266667,
+            "UseKmH": false
+        },
+        {
+            "Id": 17,
+            "Name": "Fitness, Let",
+            "kCal": 0.066666667,
+            "UseKmH": false
+        },
+        {
+            "Id": 18,
+            "Name": "Fitness, Hård",
+            "kCal": 0.15,
+            "UseKmH": false
+        },
+        {
+            "Id": 19,
+            "Name": "Gang (km/t)",
+            "kCal": 0.013888889,
+            "UseKmH": true
+        },
+        {
+            "Id": 20,
+            "Name": "Løb (km/t)",
+            "kCal": 0.016666667,
+            "UseKmH": true
+        },
+        {
+            "Id": 21,
+            "Name": "Cykling (km/t)",
+            "kCal": 0.006666667,
+            "UseKmH": true
+        },
+        {
+            "Id": 21,
+            "Name": "Svømning (km/t)",
+            "kCal": 0.061111,
+            "UseKmH": true
+        }
+    ]
     };
     this.getFoodTypes = function () {
         return [{

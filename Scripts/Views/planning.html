@@ -31,7 +31,7 @@
 			<label>BMI:</label>&nbsp;{{testPerson.Weight | BMIFilter : testPerson.Height }}<br/>
     		<label>BMR:</label>&nbsp;{{thisBMR = (testPerson.Age | BMRFilter : testPerson.Gender : testPerson.Weight : testPerson.Height)}} kCal<br/>
 			<label>Totalt Indtag:</label>&nbsp;{{TotalConsumed = getTotal(FoodList,'Total')}} kCal<br/>
-			<label>Total Forbr&aelig;nding:</label>&nbsp;{{TotalBurned = (getTotal(FoodList,'Total') + parseFloat(thisBMR))}} kCal<br/>
+			<label>Total Forbr&aelig;nding:</label>&nbsp;{{TotalBurned = thisBMR}} kCal<br/>
 			<label>I alt:</label>&nbsp;{{TotalConsumed - TotalBurned}} kCal
 		</div>
 	</div>
@@ -40,10 +40,10 @@
 					<h2 class="h2 seaSide">Indtag</h2>
 	<input type="text" ng-model="searchFood" />
 	<input type="number" ng-model="selectedQuantity"/>
-	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes">
+	<select ng-model="selectedFoodType" ng-options="f.Type for f in foodTypes | orderBy : 'Type'">
 		<option value=""></option>
 	</select>
-	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id } | filter : searchFood"></select>
+	<select ng-model="selectedFood" ng-options="f.Name for f in food | filter : { TypeId : selectedFoodType.Id } | filter : searchFood | orderBy : 'Name'"></select>
 	<button ng-click="FoodList.push({'Quantity' : selectedQuantity, 'Name' : selectedFood.Name, 'kCal' : selectedFood.Calories })">Add</button>
 	<table class="mr100PW" ng-init="FoodList = []">
 		<thead>
@@ -69,24 +69,29 @@
 	<div class="mr2">
 		<div class="mrEnamel mrWhite mrPad4 mrMar2">
 					<h2 class="h2 seaSide">Forbr&aelig;nding</h2>
-	<select ng-model="selectedActivity" ng-options="a.Name for a in activities">
+		<input type="number" ng-model="selectedTime"/>
+		<input type="number" ng-model="selectedSpeed"/>
+	<select ng-model="selectedActivity" ng-options="a.Name for a in activities | orderBy : 'Name'">
 		<option value=""></option>
 	</select>
-		<table class="mr100PW" ng-init="FoodList = []">
+		<button ng-click="ActivityList.push({'Time' : selectedTime, 'Speed' : (selectedActivity.UseKmH === true ? selectedSpeed : 1), 'Name' : selectedActivity.Name, 'kCal' : selectedActivity.kCal, 'UseKmH' : selectedActivity.UseKmH })">Add</button>
+		<table class="mr100PW" ng-init="ActivityList = []">
 		<thead>
 			<tr>
-				<th class="mrTxtC mr25PW">Kvantitet (g)</th>
-				<th class="mrTxtC mr25PW">Type</th>
-				<th class="mrTxtC mr25PW">kCal</th>
-				<th class="mr25PW"></th>
+				<th class="mrTxtC mr20PW">Tid (m)</th>
+				<th class="mrTxtC mr20PW">km/t</th>
+				<th class="mrTxtC mr20PW">Type</th>
+				<th class="mrTxtC mr20PW">kCal</th>
+				<th class="mr20PW"></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="s in FoodList">
-				<td class="mrTxtC"><input type="number" ng-model="s.Quantity"/></td>
-				<td class="mrTxtC" ng-bind="s.Name"></td>
-				<td class="mrTxtC" ng-bind="(s.kCal * s.Quantity).toFixed(2)"></td>
-				<td><button ng-click="FoodList.splice($index, 1)">Fjern</button></td>
+			<tr ng-repeat="a in ActivityList">
+				<td class="mrTxtC"><input type="number" ng-model="a.Time"/></td>
+				<td class="mrTxtC"><input type="number" ng-model="a.Speed"/></td>
+				<td class="mrTxtC" ng-bind="a.Name"></td>
+				<td class="mrTxtC" ng-bind="a.Total = (a.kCal * a.Time * a.Speed).toFixed(2)"></td>
+				<td><button ng-click="ActivityList.splice($index, 1)">Fjern</button></td>
 			</tr>
 		</tbody>
 	</table>
