@@ -6,7 +6,16 @@ app.run(['$rootScope', function ($rootScope) {
     // $rootScope.msg = mesageService.message(", Glasgow ");
 }]);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$provide', '$routeProvider', function($provide, $routeProvider) {
+
+    $provide.decorator('$exceptionHandler', function ($delegate) {
+
+        return function (exception, cause) {
+            $delegate(exception, cause);
+            alert('Totalt øv fejl!');
+        };
+    });
+
     $routeProvider
     .when("/", {
         templateUrl : "Scripts/Views/home.html?v=" + appVersion,
@@ -45,7 +54,6 @@ function drawBMIGraph (width) {
 setTimeout(function () {
     drawBMIGraph(document.getElementById("BMI_Box").offsetWidth);
 }, 0);
-
 
 }]);
 
