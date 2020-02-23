@@ -13,8 +13,8 @@ export class ErrorService implements ErrorHandler {
    if (Error instanceof HttpErrorResponse) {
     console.log(error.status);
    } else {
-    console.error('Øv øv øv!');
+    console.log(error);
    }
-   // router.navigate(['Error']);
+   router.navigate(['Error']);
    }
  }

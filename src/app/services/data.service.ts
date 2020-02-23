@@ -5,6 +5,7 @@ import { Activity } from '../models/activity';
 import { FoodType } from '../models/food-type';
 import { Food } from '../models/food';
 import { Person } from '../models/person';
+import { CookieService } from './cookie.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class DataService {
   food = 'FoodStorage';
   activities = 'ActivityStorage';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   getPerson(id: number): Person {
     return null;
@@ -39,9 +40,7 @@ export class DataService {
   }
 
   setPersons(person: Person): void {
-    if (localStorage) {
-
-    }
+    this.cookie.setLocal(this.persons, JSON.stringify(person));
   }
 
   getActivities(): Observable<Activity[]> {

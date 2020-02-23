@@ -11,6 +11,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ErrorService } from './services/error.service';
 import { InterceptorService } from './services/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BasicTableComponent } from './components/basic-table/basic-table.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     BmrPipe,
     AgePipe,
     MainPageComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    BasicTableComponent
   ],
   imports: [
     BrowserModule,
