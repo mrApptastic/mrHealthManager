@@ -7,18 +7,17 @@ body {
 
 @font-face { 
     font-family: 'Monty'; 
-    src: url('/src/assets/fonts/Montserrat-Regular.woff') 
-        format('woff'), 
-        url('/src/assets/fonts/Montserrat-Regular.ttf') 
-        format('truetype'); 
+    src: url('assets/fonts/Montserrat-Regular.woff') format('woff'), 
+         url('assets/fonts/Montserrat-Regular.ttf') format('truetype'); 
 }
+
+
+
 
 @font-face { 
     font-family: 'Seaside'; 
-    src: url('/src/assets/fonts/SEASRN.woff') 
-        format('woff'), 
-        url('/src/assets/fonts/SEASRN.ttf') 
-        format('truetype'); 
+    src: url('assets/fonts/SEASRN.woff') format('woff'), 
+         url('assets/fonts/SEASRN.ttf') format('truetype'); 
 }
 
 
@@ -26,7 +25,7 @@ body {
     font-family: 'Monty';  
 }
 
-.seaSide {
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Seaside';   
 }
 
