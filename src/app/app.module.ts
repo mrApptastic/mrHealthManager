@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +8,9 @@ import { BmrPipe } from './pipes/bmr.pipe';
 import { AgePipe } from './pipes/age.pipe';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { ErrorService } from './services/error.service';
+import { InterceptorService } from './services/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: ErrorService},
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
