@@ -1,15 +1,15 @@
-<table>
+<table *ngIf="dataSource">
     <thead>
         <tr>
-            <th>
-                Hej
+            <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+                {{col.Name}}
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                Hej hej
+        <tr *ngFor="let row of dataSource">
+            <td *ngFor="let col of columns">
+                <span *ngIf="col.Name" [innerHtml]="row[col.Name]"></span>
             </td>
         </tr>
     </tbody>
