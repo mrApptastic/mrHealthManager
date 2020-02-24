@@ -11,7 +11,7 @@ export class MainPageComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.getActivities().subscribe(x => {
+    this.data.getActivitiesFromTemplate().subscribe(x => {
       this.dataSource = x;
     });
   }

@@ -36,22 +36,27 @@ export class DataService {
   }
 
   getPersons(): Person[] {
-    return null;
+    const storedPersons = this.cookie.getLocal(this.persons);
+    if (storedPersons) {
+      return JSON.parse(storedPersons) as Person[];
+    } else {
+
+    }
   }
 
-  setPersons(person: Person): void {
+  setPersons(person: Person[]): void {
     this.cookie.setLocal(this.persons, JSON.stringify(person));
   }
 
-  getActivities(): Observable<Activity[]> {
+  getActivitiesFromTemplate(): Observable<Activity[]> {
     return this.http.get<Activity[]>('assets/activities.json');
   }
 
-  getFoodTypes(): Observable<FoodType[]> {
+  getFoodTypesFromTemplate(): Observable<FoodType[]> {
     return this.http.get<FoodType[]>('assets/foodTypes.json');
   }
 
-  getFood(): Observable<Food[]> {
+  getFoodFromTemplate(): Observable<Food[]> {
     return this.http.get<Food[]>('assets/food.json');
   }
 }
