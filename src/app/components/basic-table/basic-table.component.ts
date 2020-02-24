@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-basic-table',
@@ -7,6 +7,11 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 })
 export class BasicTableComponent implements OnInit, OnChanges {
   @Input() dataSource: any[];
+  @Input() editable: boolean;
+  @Output() onRowClick = new EventEmitter<any>();
+  @Output() onDataChange = new EventEmitter<any>();
+
+
   columns: any[];
   constructor() { }
 
@@ -24,6 +29,14 @@ export class BasicTableComponent implements OnInit, OnChanges {
     }
   }
 
+  rowClick(obj: any) {
+    this.onRowClick.emit(obj);
+  }
+
+  dataChange(obj: any) {
+    this.onDataChange.emit(obj);
+  }
+
   private getColumns(data: any[]) {
     let columns = new Array();
 
@@ -38,8 +51,9 @@ export class BasicTableComponent implements OnInit, OnChanges {
         } else {
           columns.push({
             Name : key,
-            Width : value.toString().length
-          })
+            Width : key.toString().length > value.toString().length ? key.toString().length : value.toString().length,
+            Input : this.editable ? (typeof(value) === 'number' ? 'number' : typeof(value) === 'boolean' ? 'checkbox' : 'text') : null
+          });
         }        
       }
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -11,9 +11,9 @@ export class MainPageComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.getFood().subscribe(x => {
+    this.data.getActivities().subscribe(x => {
       this.dataSource = x;
-    })    
+    })
   }
 
   /*

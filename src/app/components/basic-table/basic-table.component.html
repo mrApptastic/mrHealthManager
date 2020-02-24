@@ -9,8 +9,14 @@
     <tbody>
         <tr *ngFor="let row of dataSource">
             <td *ngFor="let col of columns">
-                <span *ngIf="col.Name" [innerHtml]="row[col.Name]"></span>
+                <span *ngIf="col.Name && !col.Input" [innerHtml]="row[col.Name]"></span>
+                <span *ngIf="col.Name && col.Input">
+                    <input *ngIf="col.Input === 'text'" type="text" [(ngModel)]="row[col.Name]" />
+                    <input *ngIf="col.Input === 'number'" type="text" [(ngModel)]="row[col.Name]" step="any" />
+                    <input *ngIf="col.Input === 'checkbox'" type="checkbox" [(ngModel)]="row[col.Name]" [ngModelOptions]="{standalone: true}" />
+                </span>
             </td>
         </tr>
     </tbody>
+
 </table>

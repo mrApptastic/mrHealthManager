@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; 
 import { NgModule, ErrorHandler } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BmiPipe } from './pipes/bmi.pipe';
@@ -27,7 +27,8 @@ import { BasicTableComponent } from './components/basic-table/basic-table.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: ErrorService},
