@@ -13,7 +13,11 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.data.getActivities().subscribe(x => {
       this.dataSource = x;
-    })
+    });
+  }
+
+  sayHello(): void {
+
   }
 
   /*

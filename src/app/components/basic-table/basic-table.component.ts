@@ -7,9 +7,13 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 })
 export class BasicTableComponent implements OnInit, OnChanges {
   @Input() dataSource: any[];
-  @Input() editable: boolean;
-  @Output() onRowClick = new EventEmitter<any>();
-  @Output() onDataChange = new EventEmitter<any>();
+  @Input() editable: any;
+  @Output() rowClick = new EventEmitter<any>();
+  @Output() dataChange = new EventEmitter<any>();
+  editAll: boolean;
+  sortOrder: string;
+  sortDirection: boolean;
+  searchFilter: string;
 
 
   columns: any[];
@@ -25,51 +29,56 @@ export class BasicTableComponent implements OnInit, OnChanges {
 
   loadData() {
     if (this.dataSource) {
+      this.editAll = this.editable.toString() === 'true';
       this.columns = this.getColumns(this.dataSource);
+      this.sortOrder = this.columns.length > 0 ? this.columns[0].Name : '';
+      this.sortDirection = false;
+      this.searchFilter = '';
     }
   }
 
-  rowClick(obj: any) {
-    this.onRowClick.emit(obj);
+  onRowClick(obj: any) {
+    this.rowClick.emit(obj);
   }
 
-  dataChange(obj: any) {
-    this.onDataChange.emit(obj);
+  onDataChange(obj: any) {
+    this.dataChange.emit(obj);
   }
 
   private getColumns(data: any[]) {
-    let columns = new Array();
+    const columns = new Array();
 
     for (const row of data) {
-      for (const [key,value] of Object.entries(row) ) {
+      for (const [key, value] of Object.entries(row) ) {
         if (columns.some(x => x.Name === key)) {
           const length = value.toString().length;
-          let col = columns.find(x => x.Name === key);
-          if (length > col.Width) {                 
+          const col = columns.find(x => x.Name === key);
+          if (length > col.Width) {
             col.width = length;
           }
         } else {
           columns.push({
-            Name : key,
-            Width : key.toString().length > value.toString().length ? key.toString().length : value.toString().length,
-            Input : this.editable ? (typeof(value) === 'number' ? 'number' : typeof(value) === 'boolean' ? 'checkbox' : 'text') : null
+            Name: key,
+            Width: key.toString().length > value.toString().length ? key.toString().length : value.toString().length,
+            Input: this.editAll ? (typeof(value) === 'number' ? 'number' : typeof(value) === 'boolean' ? 'checkbox' : 'text') : null,
+            Position: (typeof(value) === 'number' ? 'right' : (typeof(value) === 'string' ? 'left' : 'center' ))
           });
-        }        
+        }
       }
     }
 
     return this.convertToPercent(columns);
   }
 
-  private convertToPercent(columns) {
+  private convertToPercent(columns: any) {
     const sum = this.getSum(columns);
     for (const col of columns) {
-      col.Width = col.Width/sum * 100;
+      col.Width = col.Width / sum * 100;
     }
     return columns;
   }
 
-  private getSum (columns) {
+  private getSum(columns: any) {
     let sum = 0;
     for (const col of columns) {
       sum += col.Width;

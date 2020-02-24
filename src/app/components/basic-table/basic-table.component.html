@@ -1,22 +1,24 @@
+<div>
+    <input type="text" placeholder="Filter data" [(ngModel)]="searchFilter" style="width: 60%; margin-left:20%; margin-right: 20%;margin-bottom: 1%" />
+</div>
 <table *ngIf="dataSource">
     <thead>
         <tr>
-            <th *ngFor="let col of columns" [ngStyle]="{'width': col.width}">
+            <th *ngFor="let col of columns" [ngStyle]="{'width': col.Width, 'text-align': col.Position}" (click)="col.Name === sortOrder ? sortDirection = !sortDirection : sortOrder = col.Name">
                 {{col.Name}}
             </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of dataSource">
-            <td *ngFor="let col of columns">
-                <span *ngIf="col.Name && !col.Input" [innerHtml]="row[col.Name]"></span>
-                <span *ngIf="col.Name && col.Input">
-                    <input *ngIf="col.Input === 'text'" type="text" [(ngModel)]="row[col.Name]" />
-                    <input *ngIf="col.Input === 'number'" type="text" [(ngModel)]="row[col.Name]" step="any" />
-                    <input *ngIf="col.Input === 'checkbox'" type="checkbox" [(ngModel)]="row[col.Name]" [ngModelOptions]="{standalone: true}" />
+        <tr *ngFor="let row of dataSource | search: searchFilter | sort : sortOrder : sortDirection" (click)="onRowClick(row)">
+            <td *ngFor="let col of columns" [ngStyle]="{'width': col.Width, 'text-align': col.Position}">
+                <span *ngIf="row.hasOwnProperty(col.Name) && !col.Input" [innerHtml]="row[col.Name]"></span>
+                <span *ngIf="row.hasOwnProperty(col.Name) && col.Input">
+                    <input *ngIf="col.Input === 'text'" type="text" [(ngModel)]="row[col.Name]" (change)="onDataChange(row)" />
+                    <input *ngIf="col.Input === 'number'" type="text" [(ngModel)]="row[col.Name]" step="any" (change)="onDataChange(row)" />
+                    <input *ngIf="col.Input === 'checkbox'" type="checkbox" [(ngModel)]="row[col.Name]" [ngModelOptions]="{standalone: true}" (change)="onDataChange(row)" />
                 </span>
             </td>
         </tr>
     </tbody>
-
 </table>

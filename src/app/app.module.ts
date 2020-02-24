@@ -13,6 +13,8 @@ import { ErrorService } from './services/error.service';
 import { InterceptorService } from './services/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicTableComponent } from './components/basic-table/basic-table.component';
+import { SortPipe } from './pipes/sort.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { BasicTableComponent } from './components/basic-table/basic-table.compon
     AgePipe,
     MainPageComponent,
     ErrorPageComponent,
-    BasicTableComponent
+    BasicTableComponent,
+    SortPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
