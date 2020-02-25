@@ -6,11 +6,13 @@ import { FoodType } from '../models/food-type';
 import { Food } from '../models/food';
 import { Person } from '../models/person';
 import { CookieService } from './cookie.service';
+import { Data } from '../models/data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  data = 'DataStorage';
   persons = 'PersonStorage';
   food = 'FoodStorage';
   activities = 'ActivityStorage';
@@ -59,4 +61,34 @@ export class DataService {
   getFoodFromTemplate(): Observable<Food[]> {
     return this.http.get<Food[]>('assets/food.json');
   }
+
+  dataCheck(): boolean {
+    return !!this.cookie.getLocal(this.data);
+  }
+
+  getDataObject(): Data {
+    return JSON.parse(this.cookie.getLocal(this.data)) as Data;
+  }
+
+  setDataObject(dataObj: Data) {
+    this.cookie.setLocal(this.data, JSON.stringify(dataObj));
+  }
 }
+/*
+     https://coryrylan.com/blog/angular-multiple-http-requests-with-rxjs;
+    const storedData = this.cookie.getLocal(this.data);
+    if (!storedData) {
+      const dataObj = new Data();
+      dataObj.persons = new Array();
+      this.getActivitiesFromTemplate().subscribe(a => {
+        dataObj.activities = a;
+        this.getFoodTypesFromTemplate().subscribe(t => {
+          dataObj.foodTypes = t;
+          this.getFoodFromTemplate().subscribe(f => {
+            dataObj.food = f;
+            this.cookie.setLocal(this.data, JSON.stringify(dataObj));
+          });
+        });
+      });
+    }
+*/

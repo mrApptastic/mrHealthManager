@@ -11,12 +11,12 @@ export class CookieService {
 
   /* Method for to check up if the accepted cookie has been set. */
   hasAccepted(): boolean {
-    return true; // localStorage && localStorage.getItem(this.accepted) === 'true';
+    return localStorage && localStorage.getItem(this.accepted) === 'true';
   }
 
   /* Method for to check up if user has denied (stored in session storage). */
   hasDenied(): boolean {
-    return false; // sessionStorage && sessionStorage.getItem(this.accepted) === 'false';
+    return sessionStorage && sessionStorage.getItem(this.accepted) === 'false';
   }
 
   /* Method for accepting cookies. Set in localStorage. */
