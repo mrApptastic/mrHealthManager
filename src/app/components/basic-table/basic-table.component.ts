@@ -14,9 +14,8 @@ export class BasicTableComponent implements OnInit, OnChanges {
   sortOrder: string;
   sortDirection: boolean;
   searchFilter: string;
-
-
   columns: any[];
+
   constructor() { }
 
   ngOnInit(): void {
