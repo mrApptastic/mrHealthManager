@@ -15,6 +15,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicTableComponent } from './components/basic-table/basic-table.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { ActivityPageComponent } from './components/activity-page/activity-page.component';
+import { FoodPageComponent } from './components/food-page/food-page.component';
+import { PlanningPageComponent } from './components/planning-page/planning-page.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { SearchPipe } from './pipes/search.pipe';
     ErrorPageComponent,
     BasicTableComponent,
     SortPipe,
-    SearchPipe
+    SearchPipe,
+    ActivityPageComponent,
+    FoodPageComponent,
+    PlanningPageComponent
   ],
   imports: [
     BrowserModule,

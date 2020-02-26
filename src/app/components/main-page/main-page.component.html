@@ -16,7 +16,7 @@
 	</div>
 	<div class="mr1 mrShadow mrWhite mrMart2 mrMarb2 mrEnamel">
 		<div class="mrPad5 mrMar5">
-			<app-basic-table [dataSource]="dataSource" editable="Name, UseKmH" (rowClick)="sayHello()"></app-basic-table>
+			<app-basic-table [dataSource]="dataSource" editable="false" (dataChange)="update($event)"></app-basic-table>
 		</div>
 	</div>
 </div>

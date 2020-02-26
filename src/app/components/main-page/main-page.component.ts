@@ -21,8 +21,8 @@ export class MainPageComponent implements OnInit {
     }, 0);
   }
 
-  sayHello(): void {
-
+  update($event): void {
+    // this.data.setPerson($event);
   }
 
   /*
