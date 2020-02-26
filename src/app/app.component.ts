@@ -28,6 +28,62 @@ export class AppComponent implements OnInit {
           dataObj.foodTypes = results[1];
           dataObj.food = results[2];
           this.data.setDataObject(dataObj);
+          this.data.setPerson({
+            Id : 0,
+            Name : 'Henrik',
+            Height: 180,
+            Weight: 87,
+            DateOfBirth: '1981-04-23',
+            Gender: false,
+            Activities: new Array(),
+            Consumption: new Array(),
+            History: new Array()
+          });
+          this.data.setPerson({
+            Id : 0,
+            Name : 'Signe',
+            Height: 180,
+            Weight: 87,
+            DateOfBirth: '1981-04-23',
+            Gender: true,
+            Activities: new Array(),
+            Consumption: new Array(),
+            History: new Array()
+          });
+          this.data.setPerson({
+            Id : 1,
+            Name : 'Per',
+            Height: 180,
+            Weight: 87,
+            DateOfBirth: '1981-04-23',
+            Gender: true,
+            Activities: new Array(),
+            Consumption: new Array(),
+            History: new Array()
+          });
+          this.data.setPerson({
+            Id : 5,
+            Name : 'Affe',
+            Height: 180,
+            Weight: 87,
+            DateOfBirth: '1981-04-23',
+            Gender: true,
+            Activities: new Array(),
+            Consumption: new Array(),
+            History: new Array()
+          });
+          this.data.setPerson({
+            Id : 0,
+            Name : 'Hattehår',
+            Height: 180,
+            Weight: 87,
+            DateOfBirth: '1981-04-23',
+            Gender: true,
+            Activities: new Array(),
+            Consumption: new Array(),
+            History: new Array()
+          });
+          console.log(this.data.getDataObject());
           this.loadingData = false;
       });
     }

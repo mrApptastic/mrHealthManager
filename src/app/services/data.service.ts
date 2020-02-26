@@ -27,13 +27,32 @@ export class DataService {
   setPerson(person: Person): Person {
     const personList = this.getPersons();
     if (personList && personList.some(x => x.Id === person.Id)) {
-
-    } else {
+      const per =  personList.find(x => x.Id === person.Id);
+      per.Name = person.Name;
+      per.Height = person.Height;
+      per.Weight = person.Weight;
+      per.DateOfBirth = person.DateOfBirth;
+      per.Gender = person.Gender;
+      if (person.Activities) {
+        per.Activities = new Array();
+      }
+      if (person.Consumption) {
+        per.Consumption = new Array();
+      }
+      if (person.History) {
+        per.History = new Array();
+      }
+    } else if (personList) {
       if (person.Id === 0) {
-        person.Id = personList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        if (personList.length > 0) {
+          person.Id = personList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          person.Id = 1;
+        }
       }
       personList.push(person);
     }
+    this.setPersons(personList);
 
     return person;
   }
