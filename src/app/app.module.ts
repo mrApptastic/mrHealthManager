@@ -18,6 +18,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { ActivityPageComponent } from './components/activity-page/activity-page.component';
 import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PlanningPageComponent } from './components/planning-page/planning-page.component';
+import { PersonPageComponent } from './components/person-page/person-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PlanningPageComponent } from './components/planning-page/planning-page.
     SearchPipe,
     ActivityPageComponent,
     FoodPageComponent,
-    PlanningPageComponent
+    PlanningPageComponent,
+    PersonPageComponent
   ],
   imports: [
     BrowserModule,
