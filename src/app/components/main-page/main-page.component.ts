@@ -11,9 +11,14 @@ export class MainPageComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.getActivitiesFromTemplate().subscribe(x => {
+    /*
+    this.data.getFoodFromTemplate().subscribe(x => {
       this.dataSource = x;
     });
+    */
+    setTimeout(() => {
+      this.dataSource = this.data.getActivities();
+    }, 0);
   }
 
   sayHello(): void {

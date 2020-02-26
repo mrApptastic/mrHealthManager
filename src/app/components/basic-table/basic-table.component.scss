@@ -1,11 +1,17 @@
 .containerBandit {
-    overflow: auto;
-    overflow-x: auto;
-    overflow-y: auto;
+    // overflow-x: auto;
 }
 
 .tableBandit {
     width: 100%;
+}
+
+.tableBandit thead tr th {
+    font-weight: bolder;
+}
+
+.tableBandit thead tr th:hover {
+    cursor: pointer;
 }
 
 .tableBandit thead tr th,

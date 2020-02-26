@@ -13,14 +13,15 @@ import { Data } from '../models/data';
 })
 export class DataService {
   data = 'DataStorage';
-  persons = 'PersonStorage';
-  food = 'FoodStorage';
-  activities = 'ActivityStorage';
 
   constructor(private http: HttpClient, private cookie: CookieService) { }
 
   getPerson(id: number): Person {
-    return null;
+    return this.getPersons().find(x => x.Id === id);
+  }
+
+  getPersons(): Person[] {
+    return this.getData('persons');
   }
 
   setPerson(person: Person): Person {
@@ -37,33 +38,47 @@ export class DataService {
     return person;
   }
 
-  getPersons(): Person[] {
-    const storedPersons = this.cookie.getLocal(this.persons);
-    if (storedPersons) {
-      return JSON.parse(storedPersons) as Person[];
-    } else {
-
-    }
-  }
-
-  setPersons(person: Person[]): void {
-    this.cookie.setLocal(this.persons, JSON.stringify(person));
+  setPersons(persons: Person[]): void {
+    const dataObj = this.getDataObject();
+    dataObj.persons = persons;
+    this.setDataObject(dataObj);
   }
 
   getActivitiesFromTemplate(): Observable<Activity[]> {
     return this.http.get<Activity[]>('assets/activities.json');
   }
 
+  getActivities(): Activity[] {
+    return this.getData('activities');
+  }
+
   getFoodTypesFromTemplate(): Observable<FoodType[]> {
     return this.http.get<FoodType[]>('assets/foodTypes.json');
+  }
+
+  getFoodTypes(): FoodType[] {
+    return this.getData('foodTypes');
   }
 
   getFoodFromTemplate(): Observable<Food[]> {
     return this.http.get<Food[]>('assets/food.json');
   }
 
+  getFood(): Food[] {
+    return this.getData('food');
+  }
+
   dataCheck(): boolean {
     return !!this.cookie.getLocal(this.data);
+  }
+
+  getData(type: string): any {
+    if (this.dataCheck()) {
+      const dataObj = this.getDataObject() as Data;
+      return dataObj[type]
+    } else {
+      throw new console.error('Unable to get data ' + type);      
+    }
   }
 
   getDataObject(): Data {
@@ -74,21 +89,3 @@ export class DataService {
     this.cookie.setLocal(this.data, JSON.stringify(dataObj));
   }
 }
-/*
-     https://coryrylan.com/blog/angular-multiple-http-requests-with-rxjs;
-    const storedData = this.cookie.getLocal(this.data);
-    if (!storedData) {
-      const dataObj = new Data();
-      dataObj.persons = new Array();
-      this.getActivitiesFromTemplate().subscribe(a => {
-        dataObj.activities = a;
-        this.getFoodTypesFromTemplate().subscribe(t => {
-          dataObj.foodTypes = t;
-          this.getFoodFromTemplate().subscribe(f => {
-            dataObj.food = f;
-            this.cookie.setLocal(this.data, JSON.stringify(dataObj));
-          });
-        });
-      });
-    }
-*/
