@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-activity-page',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./activity-page.component.scss']
 })
 export class ActivityPageComponent implements OnInit {
-
-  constructor() { }
+  dataSource: any[];
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.dataSource = this.data.getActivities();
+    }, 0);
   }
 
+  update($event): void {
+    alert(JSON.stringify($event));
+    // this.data.setPerson($event);
+  }
 }

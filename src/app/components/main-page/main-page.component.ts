@@ -17,11 +17,12 @@ export class MainPageComponent implements OnInit {
     });
     */
     setTimeout(() => {
-      this.dataSource = this.data.getActivities();
+      this.dataSource = this.data.getPersons();
     }, 0);
   }
 
   update($event): void {
+    alert(JSON.stringify($event));
     // this.data.setPerson($event);
   }
 
