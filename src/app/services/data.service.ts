@@ -67,8 +67,40 @@ export class DataService {
     return this.http.get<Activity[]>('assets/activities.json');
   }
 
+  getActivity(id: number): Activity {
+    return this.getActivities().find(x => x.Id === id);
+  }
+
   getActivities(): Activity[] {
     return this.getData('activities');
+  }
+
+  setActivity(activity: Activity): Activity {
+    const activityList = this.getActivities();
+    if (activityList && activityList.some(x => x.Id === activity.Id)) {
+      const act =  activityList.find(x => x.Id === activity.Id);
+      act.KCal = activity.KCal;
+      act.Name = activity.Name;
+      act.UseKmH = activity.UseKmH;
+    } else if (activityList) {
+      if (activity.Id === 0) {
+        if (activityList.length > 0) {
+          activity.Id = activityList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          activity.Id = 1;
+        }
+      }
+      activityList.push(activity);
+    }
+    this.setActivities(activityList);
+
+    return activity;
+  }
+
+  setActivities(activities: Activity[]): void {
+    const dataObj = this.getDataObject();
+    dataObj.activities = activities;
+    this.setDataObject(dataObj);
   }
 
   getFoodTypesFromTemplate(): Observable<FoodType[]> {

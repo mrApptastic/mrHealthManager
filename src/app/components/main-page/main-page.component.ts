@@ -1,5 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
+import { Person } from 'src/app/models/person';
 
 @Component({
   selector: 'app-main-page',
@@ -8,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class MainPageComponent implements OnInit {
   dataSource: any[];
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private router: Router) { }
 
   ngOnInit(): void {
     /*
@@ -22,7 +24,9 @@ export class MainPageComponent implements OnInit {
   }
 
   update($event): void {
-    alert(JSON.stringify($event));
+    // alert(JSON.stringify($event));
+    const per = $event as Person;
+    this.router.navigateByUrl('/Person/' + per.Id);
     // this.data.setPerson($event);
   }
 

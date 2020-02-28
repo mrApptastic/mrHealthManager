@@ -17,7 +17,6 @@ export class ActivityPageComponent implements OnInit {
   }
 
   update($event): void {
-    alert(JSON.stringify($event));
-    // this.data.setPerson($event);
+    this.data.setActivity($event);
   }
 }

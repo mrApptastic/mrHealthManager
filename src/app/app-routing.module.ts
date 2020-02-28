@@ -5,6 +5,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { PlanningPageComponent } from './components/planning-page/planning-page.component';
 import { ActivityPageComponent } from './components/activity-page/activity-page.component';
 import { FoodPageComponent } from './components/food-page/food-page.component';
+import { PersonPageComponent } from './components/person-page/person-page.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'Home',
     component : MainPageComponent
+  },
+  {
+    path: 'Person/:Id',
+    component : PersonPageComponent
   },
   {
     path: 'Planning',
