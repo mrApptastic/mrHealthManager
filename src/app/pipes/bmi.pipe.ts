@@ -8,7 +8,7 @@ export class BmiPipe implements PipeTransform {
 
   constructor(private calc: CalcService) { }
 
-  transform(Weight: string, Height: string): string {
+  transform(Weight: number, Height: number): string {
     return this.calc.calculateBMI(Weight, Height);
   }
 

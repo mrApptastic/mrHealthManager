@@ -15,9 +15,9 @@ export class CalcService {
     return isNaN(age) ? 0 : age;
   }
 
-  calculateBMI(Weight: string, Height: string): string {
-    const w = parseFloat(Weight);
-    const h = (parseFloat(Height) / 100);
+  calculateBMI(Weight: number, Height: number): string {
+    const w = Weight;
+    const h = (Height / 100);
     return (w / (Math.pow(h, 2))).toFixed(2);
   }
 
