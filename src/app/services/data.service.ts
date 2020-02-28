@@ -111,6 +111,32 @@ export class DataService {
     return this.getData('foodTypes');
   }
 
+  setFoodType(foodType: FoodType): FoodType {
+    const foodTypeList = this.getFoodTypes();
+    if (foodTypeList && foodTypeList.some(x => x.Id === foodType.Id)) {
+      const ft =  foodTypeList.find(x => x.Id === foodType.Id);
+      ft.Type = foodType.Type;
+    } else if (foodTypeList) {
+      if (foodType.Id === 0) {
+        if (foodTypeList.length > 0) {
+          foodType.Id = foodTypeList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          foodType.Id = 1;
+        }
+      }
+      foodTypeList.push(foodType);
+    }
+    this.setFoodTypes(foodTypeList);
+
+    return foodType;
+  }
+
+  setFoodTypes(foodTypes: FoodType[]): void {
+    const dataObj = this.getDataObject();
+    dataObj.foodTypes = foodTypes;
+    this.setDataObject(dataObj);
+  }
+
   getFoodFromTemplate(): Observable<Food[]> {
     return this.http.get<Food[]>('assets/food.json');
   }
@@ -126,9 +152,9 @@ export class DataService {
   getData(type: string): any {
     if (this.dataCheck()) {
       const dataObj = this.getDataObject() as Data;
-      return dataObj[type]
-    } else {
-      throw new console.error('Unable to get data ' + type);      
+      return dataObj[type];
+    }  else {
+      throw new console.error('Unable to get data ' + type);
     }
   }
 
