@@ -8,7 +8,7 @@ export class BmrPipe implements PipeTransform {
 
   constructor(private calc: CalcService) { }
 
-  transform(Age: any, Gender: boolean, Weight: string, Height: string): string {
+  transform(Age: any, Gender: boolean, Weight: number, Height: number): string {
     return this.calc.calculateBMR(Age, Gender, Weight, Height);
   }
 
