@@ -3,12 +3,13 @@
     <h2 class="mrH1 mrsSnow mrRoddy mrMart2 mrMarb2">{{person.Name}}</h2>
     <div class="mr1 mrShadow mrWhite mrMart2 mrMarb2 mrEnamel">
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
-            <label>Gender:</label>{{person.Gender === true ? 'Kvinde' : 'Mand'}}<br/>
+            <label>Gender:</label><span (click)="person.Gender = !person.Gender; update(person)">{{person.Gender === true ? 'Kvinde' : 'Mand'}}</span><br/>
+            <label>Date Of Birth:</label><input type="string" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
             <label>Age:</label>{{person.DateOfBirth | age}} years<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
-            <label>Height:</label> {{person.Height}} cm<br/>
-            <label>Weight:</label> {{person.Weight}} kg<br/>
+            <label>Height:</label> <input type="string" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
+            <label>Weight:</label> <input type="string" (blur)="update(person)" [(ngModel)]="person.Weight" /> kg<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
             <label>BMI:</label> {{person.Weight | bmi : person.Height }}<br/>

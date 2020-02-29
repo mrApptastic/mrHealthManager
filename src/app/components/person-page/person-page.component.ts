@@ -19,4 +19,8 @@ export class PersonPageComponent implements OnInit {
     this.person = this.data.getPerson(this.id);
   }
 
+  update(person: Person) {
+    this.data.setPerson(person);
+  }
+
 }
