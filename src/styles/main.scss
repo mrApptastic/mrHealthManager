@@ -1,7 +1,6 @@
 
-body {
-    --main-bg-color: #67a9a8;
-}
+$retroBlue: rgb(103, 169, 168);
+$retroYellow: rgb(252,238,193);
 
 /* Fonts */
 
@@ -12,14 +11,11 @@ body {
 }
 
 
-
-
 @font-face { 
     font-family: 'Seaside'; 
     src: url('assets/fonts/SEASRN.woff') format('woff'), 
          url('assets/fonts/SEASRN.ttf') format('truetype'); 
 }
-
 
 body {
     font-family: 'Monty';  
@@ -41,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background: var(--main-bg-color);
+    background: $retroBlue;
 
     /*
 background: url('../Media/Cloudy5.png') no-repeat center left, 
@@ -101,3 +97,8 @@ background-attachment:fixed;
                 text-decoration: none;
                 color: gold;                
             }
+
+.retroButton {
+    border: 0.1em solid $retroBlue;
+    font: 18px 'Monty', Verdana, Sans-Serif;
+}

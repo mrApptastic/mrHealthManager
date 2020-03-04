@@ -277,3 +277,4 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .mrMagnify::before { content: ""; display: inline-block; position: absolute; right: -0.25em; bottom: -0.1em; border-width: 0; background: black; width: 0.35em; height: 0.08em; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); }
 
 
+.mrPointer { cursor: pointer };
