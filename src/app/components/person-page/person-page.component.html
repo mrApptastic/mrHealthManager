@@ -1,14 +1,15 @@
 
 <div class="mrCon75 mrPad5 marMar5">
-    <h2 class="mrH1 mrsSnow mrRoddy mrMart2 mrMarb2">{{person.Name}}</h2>
-    <div class="mr1 mrShadow mrWhite mrMart2 mrMarb2 mrEnamel">
+    <h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">{{person.Name}}</h2>
+    <input class="mrEnamel mrMar2 mrPad2" type="string" (blur)="update(person)" [(ngModel)]="person.Name" />
+    <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
             <label>Gender:</label><span (click)="person.Gender = !person.Gender; update(person)">{{person.Gender === true ? 'Kvinde' : 'Mand'}}</span><br/>
             <label>Date Of Birth:</label><input type="string" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
             <label>Age:</label>{{person.DateOfBirth | age}} years<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
-            <label>Height:</label> <input type="string" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
+            <label>Height:</label> <input class="mrEnamel mrMar1 mrPad1" type="string" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
             <label>Weight:</label> <input type="string" (blur)="update(person)" [(ngModel)]="person.Weight" /> kg<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
@@ -17,3 +18,14 @@
         </div>
     </div>	
 </div>
+<!--
+<div class="mrCon75 mrPad5 marMar5">
+	<h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">Persons</h2>
+	<div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
+		<div class="mrPad5 mrMar5">
+			<app-basic-table [dataSource]="dataSource" editable="false" (rowClick)="update($event)"></app-basic-table>
+			<button class="mrsRetroYellow mrRetroBlue mrEnamel mrPointer mrRight mrMarb1 mrMarr1 retroButton" (click)="addPerson()">Add Person</button>
+		</div>
+	</div>
+</div>
+-->

@@ -56,12 +56,17 @@ export class BasicTableComponent implements OnInit, OnChanges {
             col.width = length;
           }
         } else {
-          columns.push({
-            Name: key,
-            Width: key.toString().length > value.toString().length ? key.toString().length : value.toString().length,
-            Input: this.editAll ? (typeof(value) === 'number' ? 'number' : typeof(value) === 'boolean' ? 'checkbox' : 'text') : null,
-            Position: (typeof(value) === 'number' ? 'right' : (typeof(value) === 'string' ? 'left' : 'center' ))
-          });
+          if (!Array.isArray(value)) {
+
+            columns.push({
+              Name: key,
+              Width: key.toString().length > value.toString().length ? key.toString().length : value.toString().length,
+              Input: this.editAll && key.toString().toLowerCase() !== 'id' ?
+                    (typeof(value) === 'number' ? 'number' :
+                    typeof(value) === 'boolean' ? 'checkbox' : 'text') : null,
+              Position: (typeof(value) === 'number' ? 'right' : (typeof(value) === 'string' ? 'left' : 'center' ))
+            });
+          }
         }
       }
     }
@@ -72,7 +77,7 @@ export class BasicTableComponent implements OnInit, OnChanges {
   private convertToPercent(columns: any) {
     const sum = this.getSum(columns);
     for (const col of columns) {
-      col.Width = col.Width / sum * 100;
+      Math.floor(col.Width = col.Width / sum * 100);
     }
     return columns;
   }

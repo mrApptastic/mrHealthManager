@@ -1,5 +1,5 @@
 .containerBandit {
-    // overflow-x: auto;
+    overflow-x: auto;    
 }
 
 .tableBandit {
@@ -22,7 +22,6 @@
 .filterBandit {
     width: 60%;
     margin-left: 20%;
-    margin-right: 20%;
     margin-bottom: 0.5%;
     border-radius: 15px;
     height: 24px;
@@ -36,6 +35,9 @@
     font-weight: bolder;
   }
 
-  .navRow:hover {
-      background: blue;
+  .navRow:hover { 
+    background: rgb(103, 169, 168);
+    color: rgb(252,238,193);
+    font-weight: bolder;
+    cursor: pointer;
   }
