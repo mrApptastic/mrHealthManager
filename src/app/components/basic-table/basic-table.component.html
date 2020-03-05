@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let row of dataSource | search: searchFilter | sort : sortOrder : sortDirection" (click)="onRowClick(row)">
+            <tr *ngFor="let row of dataSource | search: searchFilter | sort : sortOrder : sortDirection" [ngClass]="!editAll ? 'navRow' : ''" (click)="onRowClick(row)">
                 <td *ngFor="let col of columns" [ngStyle]="{'width': col.Width, 'text-align': col.Position}">
                     <ng-container *ngIf="row.hasOwnProperty(col.Name)">
                         <span *ngIf="!col.Input" [innerHtml]="row[col.Name]"></span>

@@ -10,6 +10,7 @@ import { Person } from 'src/app/models/person';
 })
 export class MainPageComponent implements OnInit {
   dataSource: any[];
+
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit(): void {
@@ -18,16 +19,35 @@ export class MainPageComponent implements OnInit {
       this.dataSource = x;
     });
     */
-    setTimeout(() => {
-      this.dataSource = this.data.getPersons();
-    }, 0);
+    this.reloadPersons();
   }
 
   update($event): void {
     // alert(JSON.stringify($event));
     const per = $event as Person;
     this.router.navigateByUrl('/Person/' + per.Id);
-    // this.data.setPerson($event);
+    
+  }
+
+  addPerson(): void {    
+      this.data.setPerson({
+        Id: 0,
+        Name: '',
+        Height: 0,
+        Weight: 0,
+        DateOfBirth: '',
+        Gender: false,
+        Activities: new Array(),
+        Consumption: new Array(),
+        History: new Array()
+      });
+      this.reloadPersons();
+  }
+
+  reloadPersons(): void {
+    setTimeout(() => {
+      this.dataSource = this.data.getPersons();
+    }, 0);
   }
 
   /*
