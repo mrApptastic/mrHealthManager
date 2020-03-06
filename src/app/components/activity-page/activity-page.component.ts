@@ -11,12 +11,26 @@ export class ActivityPageComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dataSource = this.data.getActivities();
-    }, 0);
+    this.reloadData();
   }
 
   update($event): void {
     this.data.setActivity($event);
+  }
+
+  addActivity(): void {
+    this.data.setActivity({
+      Id: 0,
+      Name: '',
+      kCal: 0,
+      UseKmH: false
+    });
+    this.reloadData();
+  }
+
+  reloadData(): void {
+    setTimeout(() => {
+      this.dataSource = this.data.getActivities();
+    }, 0);
   }
 }

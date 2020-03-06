@@ -26,10 +26,9 @@ export class MainPageComponent implements OnInit {
     // alert(JSON.stringify($event));
     const per = $event as Person;
     this.router.navigateByUrl('/Person/' + per.Id);
-    
   }
 
-  addPerson(): void {    
+  addPerson(): void {
       this.data.setPerson({
         Id: 0,
         Name: '',

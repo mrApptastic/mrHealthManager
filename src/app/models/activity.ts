@@ -1,6 +1,6 @@
 export class Activity {
     Id: number;
     Name: string;
-    KCal: number;
+    kCal: number;
     UseKmH: boolean;
 }

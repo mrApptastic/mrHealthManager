@@ -1,8 +1,9 @@
 <div class="mrCon75 mrPad5 marMar5">
-	<h2 class="mrH1 mrsSnow mrRoddy mrMart2 mrMarb2">Aktiviteter</h2>
-	<div class="mr1 mrShadow mrWhite mrMart2 mrMarb2 mrEnamel">
+	<h2 class="mrH1 mrsRetroYellow mrRoddy mrMart2 mrMarb2">Aktiviteter</h2>
+	<div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
 		<div class="mrPad5 mrMar5">
 			<app-basic-table [dataSource]="dataSource" editable="true" (dataChange)="update($event)"></app-basic-table>
+			<button class="mrsRetroYellow mrRetroBlue mrEnamel mrPointer mrRight mrMarb1 mrMarr1 retroButton" (click)="addActivity()">Add Activity</button>
 		</div>
 	</div>
 </div>

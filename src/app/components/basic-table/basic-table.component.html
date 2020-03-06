@@ -16,9 +16,9 @@
                     <ng-container *ngIf="row.hasOwnProperty(col.Name)">
                         <span *ngIf="!col.Input" [innerHtml]="row[col.Name]"></span>
                         <ng-container *ngIf="col.Input">
-                            <input *ngIf="col.Input === 'text'" type="text" [(ngModel)]="row[col.Name]" (change)="onDataChange(row)" />
-                            <input *ngIf="col.Input === 'number'" type="text" [(ngModel)]="row[col.Name]" step="any" (change)="onDataChange(row)" />
-                            <input *ngIf="col.Input === 'checkbox'" type="checkbox" [(ngModel)]="row[col.Name]" [ngModelOptions]="{standalone: true}" (change)="onDataChange(row)" />
+                            <input class="mrEnamel" *ngIf="col.Input === 'text'" type="text" [(ngModel)]="row[col.Name]" (change)="onDataChange(row)" />
+                            <input class="mrEnamel" *ngIf="col.Input === 'number'" type="text" [(ngModel)]="row[col.Name]" step="any" (change)="onDataChange(row)" />
+                            <input class="mrEnamel" *ngIf="col.Input === 'checkbox'" type="checkbox" [(ngModel)]="row[col.Name]" [ngModelOptions]="{standalone: true}" (change)="onDataChange(row)" />
                         </ng-container>
                     </ng-container>
                 </td>

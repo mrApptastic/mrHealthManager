@@ -15,7 +15,7 @@ export class PersonPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.paramMap.get('Id'));
+    this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
     this.person = this.data.getPerson(this.id);
   }
 

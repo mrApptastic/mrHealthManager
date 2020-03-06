@@ -79,7 +79,7 @@ export class DataService {
     const activityList = this.getActivities();
     if (activityList && activityList.some(x => x.Id === activity.Id)) {
       const act =  activityList.find(x => x.Id === activity.Id);
-      act.KCal = activity.KCal;
+      act.kCal = activity.kCal;
       act.Name = activity.Name;
       act.UseKmH = activity.UseKmH;
     } else if (activityList) {
