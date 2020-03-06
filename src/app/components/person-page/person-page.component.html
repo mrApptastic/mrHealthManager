@@ -1,16 +1,17 @@
 
 <div class="mrCon75 mrPad5 marMar5">
-    <h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">{{person.Name}}</h2>
-    <input class="mrEnamel mrMar2 mrPad2" type="string" (blur)="update(person)" [(ngModel)]="person.Name" />
-    <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
+    <div class="mr1">
+        <input class="mrEnamel bigBox" type="string" (blur)="update(person)" [(ngModel)]="person.Name" />
+    </div>
+    <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
             <label>Gender:</label><span (click)="person.Gender = !person.Gender; update(person)">{{person.Gender === true ? 'Kvinde' : 'Mand'}}</span><br/>
-            <label>Date Of Birth:</label><input type="string" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
+            <label>Date Of Birth:</label><input class="mrEnamel" type="date" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
             <label>Age:</label>{{person.DateOfBirth | age}} years<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
-            <label>Height:</label> <input class="mrEnamel mrMar1 mrPad1" type="string" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
-            <label>Weight:</label> <input type="string" (blur)="update(person)" [(ngModel)]="person.Weight" /> kg<br/>
+            <label>Height:</label> <input class="mrEnamel" type="number" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
+            <label>Weight:</label> <input class="mrEnamel" type="number" (blur)="update(person)" [(ngModel)]="person.Weight" /> kg<br/>
         </div>
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
             <label>BMI:</label> {{person.Weight | bmi : person.Height }}<br/>
