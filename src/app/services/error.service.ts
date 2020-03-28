@@ -6,15 +6,15 @@ import { HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ErrorService implements ErrorHandler {
-  constructor(private injector: Injector) { }
+  constructor() {} // (private injector: Injector) { }
   /* Global method for handling js errors. */
   handleError(error: any) {
-   const router = this.injector.get(Router);
+   // const router = this.injector.get(Router);
    if (Error instanceof HttpErrorResponse) {
     console.log(error.status);
    } else {
     console.log(error);
    }
-   router.navigate(['Error']);
+   // router.navigate(['Error']);
    }
  }
