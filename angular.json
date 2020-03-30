@@ -31,7 +31,9 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/scripts/dataHussar.js"
+              "src/assets/scripts/mrToolBox.js",
+              "src/assets/scripts/dataHussar.js",
+              "src/assets/scripts/captainCanvas.js"
             ]
           },
           "configurations": {

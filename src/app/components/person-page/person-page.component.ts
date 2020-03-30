@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Person } from 'src/app/models/person';
 import { DataService } from 'src/app/services/data.service';
 declare function dataHussar(element, dataset, settings): void;
+declare function captainCanvas(canvas, tools, settings): void;
 
 @Component({
   selector: 'app-person-page',
@@ -13,6 +14,7 @@ export class PersonPageComponent implements OnInit {
   id: number;
   person: Person;
   bmiGraph: any;
+  cpt: any;
 
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
@@ -75,6 +77,8 @@ export class PersonPageComponent implements OnInit {
         {Id: 52, Label: '04-2017', Value: 189},
         {Id: 53, Label: '05-2017', Value: 179}
         ], {});
+
+      this.cpt = new captainCanvas('cpt', 'tls', null);
     }, 0);
   }
 
