@@ -21,7 +21,7 @@ export class PersonPageComponent implements OnInit {
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
     this.person = this.data.getPerson(this.id);
-    setTimeout(x => {
+    setTimeout(() => {
       this.bmiGraph = new dataHussar('bmiGraph', [
         {Id: 1, Label: '01-2013', Value: 7},
         {Id: 2, Label: '02-2013', Value: 5},
