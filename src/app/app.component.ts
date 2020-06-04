@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data.service';
 import { forkJoin } from 'rxjs';
 import { Data } from './models/data';
+import { Person } from './models/person';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
          ]).subscribe(results => {
           const dataObj = new Data();
           dataObj.persons = new Array();
+          dataObj.plans = new Array();
           dataObj.activities = results[0];
           dataObj.foodTypes = results[1];
           dataObj.food = results[2];
@@ -38,7 +40,7 @@ export class AppComponent implements OnInit {
             Activities: new Array(),
             Consumption: new Array(),
             History: new Array()
-          });
+          } as Person);
           this.data.setPerson({
             Id : 0,
             Name : 'Signe',
@@ -49,7 +51,7 @@ export class AppComponent implements OnInit {
             Activities: new Array(),
             Consumption: new Array(),
             History: new Array()
-          });
+          } as Person);
           this.data.setPerson({
             Id : 1,
             Name : 'Per',
@@ -60,7 +62,7 @@ export class AppComponent implements OnInit {
             Activities: new Array(),
             Consumption: new Array(),
             History: new Array()
-          });
+          } as Person);
           this.data.setPerson({
             Id : 5,
             Name : 'Affe',
@@ -71,7 +73,7 @@ export class AppComponent implements OnInit {
             Activities: new Array(),
             Consumption: new Array(),
             History: new Array()
-          });
+          } as Person);
           this.data.setPerson({
             Id : 0,
             Name : 'Hattehår',
@@ -82,7 +84,7 @@ export class AppComponent implements OnInit {
             Activities: new Array(),
             Consumption: new Array(),
             History: new Array()
-          });
+          } as Person);
           console.log(this.data.getDataObject());
           this.loadingData = false;
       });
