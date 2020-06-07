@@ -7,6 +7,8 @@ import { Food } from '../models/food';
 import { Person } from '../models/person';
 import { CookieService } from './cookie.service';
 import { Data } from '../models/data';
+import { Plan } from '../models/plan';
+import { ErrorLog } from '../models/error-log';
 
 @Injectable({
   providedIn: 'root'
@@ -36,15 +38,23 @@ export class DataService {
       per.StrideLength = person.StrideLength;
       if (!person.Activities) {
         per.Activities = new Array();
+      } else {
+        per.Activities = person.Activities;
       }
       if (!person.Consumption) {
         per.Consumption = new Array();
+      } else {
+        per.Consumption = person.Consumption;
       }
       if (!person.History) {
         per.History = new Array();
+      } else {
+        per.History = person.History;
       }
       if (!person.Plans) {
         per.Plans = new Array();
+      } else {
+        per.Plans = person.Plans;
       }
     } else if (personList) {
       if (person.Id === 0) {
@@ -147,6 +157,85 @@ export class DataService {
 
   getFood(): Food[] {
     return this.getData('food');
+  }
+
+  getPlan(id: number): Plan {
+    return this.getPlans().find(x => x.Id === id);
+  }
+
+  getPlans(): Plan[] {
+    return this.getData('persons');
+  }
+
+  setPlan(plan: Plan): Plan {
+    const planList = this.getPlans();
+    if (planList && planList.some(x => x.Id === plan.Id)) {
+      const pl =  planList.find(x => x.Id === plan.Id);
+      pl.Length = plan.Length;
+      pl.Goal = plan.Goal;
+      if (!pl.Days) {
+        pl.Days = new Array();
+      } else {
+        pl.Days = pl.Days;
+      }
+    } else if (planList) {
+      if (plan.Id === 0) {
+        if (planList.length > 0) {
+          plan.Id = planList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          plan.Id = 1;
+        }
+      }
+      planList.push(plan);
+    }
+    this.setPlans(planList);
+
+    return plan;
+  }
+
+  setPlans(plans: Plan[]): void {
+    const dataObj = this.getDataObject();
+    dataObj.plans = plans;
+    this.setDataObject(dataObj);
+  }
+
+  getLog(id: number): ErrorLog {
+    return this.getLogs().find(x => x.Id === id);
+  }
+
+  getLogs(): ErrorLog[] {
+    return this.getData('logs');
+  }
+
+  setLog(log: ErrorLog): ErrorLog {
+    const logList = this.getLogs();
+    if (logList && logList.some(x => x.Id === log.Id)) {
+      const l =  logList.find(x => x.Id === log.Id);
+      l.CookiesEnabled = log.CookiesEnabled;
+      l.Details = log.Details;
+      l.IsTouchDevice = log.IsTouchDevice;
+      l.Message = log.Message;
+      l.Platform = log.Platform;
+      l.WebBrowser = log.WebBrowser;
+    } else if (logList) {
+      if (log.Id === 0) {
+        if (logList.length > 0) {
+          log.Id = logList.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          log.Id = 1;
+        }
+      }
+      logList.push(log);
+    }
+    this.setLogs(logList);
+
+    return log;
+  }
+
+  setLogs(logs: ErrorLog[]): void {
+    const dataObj = this.getDataObject();
+    dataObj.logs = logs;
+    this.setDataObject(dataObj);
   }
 
   dataCheck(): boolean {

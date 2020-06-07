@@ -19,6 +19,7 @@ import { ActivityPageComponent } from './components/activity-page/activity-page.
 import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PlanningPageComponent } from './components/planning-page/planning-page.component';
 import { PersonPageComponent } from './components/person-page/person-page.component';
+import { PlanningOverviewPageComponent } from './components/planning-overview-page/planning-overview-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PersonPageComponent } from './components/person-page/person-page.compon
     ActivityPageComponent,
     FoodPageComponent,
     PlanningPageComponent,
-    PersonPageComponent
+    PersonPageComponent,
+    PlanningOverviewPageComponent
   ],
   imports: [
     BrowserModule,
