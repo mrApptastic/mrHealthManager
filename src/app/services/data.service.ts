@@ -33,14 +33,18 @@ export class DataService {
       per.Weight = person.Weight;
       per.DateOfBirth = person.DateOfBirth;
       per.Gender = person.Gender;
-      if (person.Activities) {
+      per.StrideLength = person.StrideLength;
+      if (!person.Activities) {
         per.Activities = new Array();
       }
-      if (person.Consumption) {
+      if (!person.Consumption) {
         per.Consumption = new Array();
       }
-      if (person.History) {
+      if (!person.History) {
         per.History = new Array();
+      }
+      if (!person.Plans) {
+        per.Plans = new Array();
       }
     } else if (personList) {
       if (person.Id === 0) {

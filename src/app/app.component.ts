@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
           const dataObj = new Data();
           dataObj.persons = new Array();
           dataObj.plans = new Array();
+          dataObj.logs = new Array();
           dataObj.activities = results[0];
           dataObj.foodTypes = results[1];
           dataObj.food = results[2];
@@ -39,7 +40,9 @@ export class AppComponent implements OnInit {
             Gender: false,
             Activities: new Array(),
             Consumption: new Array(),
-            History: new Array()
+            History: new Array(),
+            StrideLength: 0,
+            Plans: new Array()
           } as Person);
           this.data.setPerson({
             Id : 0,
@@ -50,7 +53,9 @@ export class AppComponent implements OnInit {
             Gender: true,
             Activities: new Array(),
             Consumption: new Array(),
-            History: new Array()
+            History: new Array(),
+            StrideLength: 0,
+            Plans: new Array()
           } as Person);
           this.data.setPerson({
             Id : 1,
@@ -61,7 +66,9 @@ export class AppComponent implements OnInit {
             Gender: true,
             Activities: new Array(),
             Consumption: new Array(),
-            History: new Array()
+            History: new Array(),
+            StrideLength: 0,
+            Plans: new Array()
           } as Person);
           this.data.setPerson({
             Id : 5,
@@ -72,7 +79,9 @@ export class AppComponent implements OnInit {
             Gender: true,
             Activities: new Array(),
             Consumption: new Array(),
-            History: new Array()
+            History: new Array(),
+            StrideLength: 0,
+            Plans: new Array()
           } as Person);
           this.data.setPerson({
             Id : 0,
@@ -83,7 +92,9 @@ export class AppComponent implements OnInit {
             Gender: true,
             Activities: new Array(),
             Consumption: new Array(),
-            History: new Array()
+            History: new Array(),
+            StrideLength: 0,
+            Plans: new Array()
           } as Person);
           console.log(this.data.getDataObject());
           this.loadingData = false;

@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/models/person';
+import { Plan } from 'src/app/models/plan';
 
 @Component({
   selector: 'app-main-page',
@@ -36,9 +37,11 @@ export class MainPageComponent implements OnInit {
         Weight: 0,
         DateOfBirth: '',
         Gender: false,
+        StrideLength: 0,
         Activities: new Array(),
         Consumption: new Array(),
-        History: new Array()
+        History: new Array(),
+        Plans: new Array()
       });
       this.reloadPersons();
   }
