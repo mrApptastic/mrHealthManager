@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PlanningPageComponent } from './components/planning-page/planning-page.component';
 import { PersonPageComponent } from './components/person-page/person-page.component';
 import { PlanningOverviewPageComponent } from './components/planning-overview-page/planning-overview-page.component';
+import { AbstractInputComponent } from './components/abstract-input/abstract-input.component';
+import { AbstractModelComponent } from './components/abstract-input/abstract-model.component';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { PlanningOverviewPageComponent } from './components/planning-overview-pa
     FoodPageComponent,
     PlanningPageComponent,
     PersonPageComponent,
-    PlanningOverviewPageComponent
+    PlanningOverviewPageComponent,
+    AbstractInputComponent,
+    AbstractModelComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

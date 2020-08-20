@@ -31,9 +31,9 @@
     <div class="mr1">
         <div class="mr2 mrMart2 mrMarb2">
             <div id="BMI_Box" class="mrOfsXScrl">
-                <h3 class="mrH3 mrWhite ">BMI-Udvikling</h3>           
+                <h3 class="mrH3 mrWhite ">BMI-Udvikling</h3>
               <svg id="BMI_Graph" class="mr100PW mrWhite"></svg>
-               
+
             </div>
         </div>
     </div>
@@ -44,28 +44,28 @@
 		<div class="mrEnamel mrWhite mrPad4 mrMar2">
 			<h2 class="mrH3 seaSide">Persondata</h2>
 			<label>
-				Navn: 
+				Navn:
 			</label>
 			<input type="text" ng-model="testPerson.Name" ng-init="testPerson.Name = personStats.Name" />
 			<br/>
 			<label>
-				Alder: 
+				Alder:
 			</label>
 			<input type="number" ng-model="testPerson.Age" ng-init="testPerson.Age = (personStats.DateOfBirth | ageFilter)" />
 			<br/>
 			<label ng-init="testPerson.Gender = (personStats.Gender == true).toString()">
-				K&oslash;n: 
+				K&oslash;n:
 			</label>
 				<input type="radio" ng-model="testPerson.Gender" value="true">Kvinde
 				<input type="radio" ng-model="testPerson.Gender" value="false">Mand
 			<br/>
 			<label>
-				H&oslash;jde: 
+				H&oslash;jde:
 			</label>
 			<input type="number" ng-model="testPerson.Height" ng-init="testPerson.Height = personStats.Height" />
 			<br/>
 			<label>
-				V&aelig;gt: 
+				V&aelig;gt:
 			</label>
 			<input type="number" ng-model="testPerson.Weight" ng-init="testPerson.Weight = personStats.Weight" />
 			<br/>
