@@ -6,10 +6,10 @@
     <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
         <div class="mr3 mrTxtC mrPadt2 mrPadb2">
             <label>Gender:</label>
-            <select class="mrEnamel" (change)="person.Gender = person.Gender.toString() === 'true'; update(person)" [(ngModel)]="person.Gender">
+            <select class="mrEnamel" (change)="person.Gender = person.Gender === true; update(person)" [(ngModel)]="person.Gender">
                 <option value="true">Female</option>
                 <option value="false">Male</option>
-            </select>    
+            </select>
             <br/>
             <label>Date Of Birth:</label><input class="mrEnamel" type="date" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
             <label>Age:</label>{{person.DateOfBirth | age}} years<br/>
@@ -22,7 +22,7 @@
             <label>BMI:</label> {{person.Weight | bmi : person.Height }}<br/>
             <label>BMR:</label> {{person.DateOfBirth | bmr : person.Gender : person.Weight : person.Height }} kCal<br/>
         </div>
-    </div>	
+    </div>
 </div>
 <!--
 <div class="mrCon75 mrPad5 marMar5">
