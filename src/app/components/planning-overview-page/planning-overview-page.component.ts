@@ -25,16 +25,9 @@ export class PlanningOverviewPageComponent implements OnInit {
   addPlan(): void {
       this.data.setPlan({
         Id: 0,
-        Name: '',
-        Height: 0,
-        Weight: 0,
-        DateOfBirth: '',
-        Gender: false,
-        StrideLength: 0,
-        Activities: new Array(),
-        Consumption: new Array(),
-        History: new Array(),
-        Plans: new Array()
+        Length: 0,
+        Goal: 0,
+        Days: new Array()
       });
       this.reloadPlans();
   }

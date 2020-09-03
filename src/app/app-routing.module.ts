@@ -6,6 +6,7 @@ import { PlanningPageComponent } from './components/planning-page/planning-page.
 import { ActivityPageComponent } from './components/activity-page/activity-page.component';
 import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PersonPageComponent } from './components/person-page/person-page.component';
+import { PlanningOverviewPageComponent } from './components/planning-overview-page/planning-overview-page.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   },
   {
     path: 'Planning',
+    component : PlanningOverviewPageComponent
+  },
+  {
+    path: 'Planning/:Id',
     component : PlanningPageComponent
   },
   {
