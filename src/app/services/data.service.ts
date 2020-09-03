@@ -30,32 +30,35 @@ export class DataService {
     const personList = this.getPersons();
     if (personList && personList.some(x => x.Id === person.Id)) {
       const per =  personList.find(x => x.Id === person.Id);
-      per.Name = person.Name;
-      per.Height = person.Height;
-      per.Weight = person.Weight;
-      per.DateOfBirth = person.DateOfBirth;
-      per.Gender = person.Gender;
-      per.StrideLength = person.StrideLength;
-      if (!person.Activities) {
-        per.Activities = new Array();
-      } else {
-        per.Activities = person.Activities;
+      for (const ll in person) {
+        per[ll] = person[ll];
       }
-      if (!person.Consumption) {
-        per.Consumption = new Array();
-      } else {
-        per.Consumption = person.Consumption;
-      }
-      if (!person.History) {
-        per.History = new Array();
-      } else {
-        per.History = person.History;
-      }
-      if (!person.Plans) {
-        per.Plans = new Array();
-      } else {
-        per.Plans = person.Plans;
-      }
+      // per.Name = person.Name;
+      // per.Height = person.Height;
+      // per.Weight = person.Weight;
+      // per.DateOfBirth = person.DateOfBirth;
+      // per.Gender = person.Gender;
+      // per.StrideLength = person.StrideLength;
+      // if (!person.Activities) {
+      //   per.Activities = new Array();
+      // } else {
+      //   per.Activities = person.Activities;
+      // }
+      // if (!person.Consumption) {
+      //   per.Consumption = new Array();
+      // } else {
+      //   per.Consumption = person.Consumption;
+      // }
+      // if (!person.History) {
+      //   per.History = new Array();
+      // } else {
+      //   per.History = person.History;
+      // }
+      // if (!person.Plans) {
+      //   per.Plans = new Array();
+      // } else {
+      //   per.Plans = person.Plans;
+      // }
     } else if (personList) {
       if (person.Id === 0) {
         if (personList.length > 0) {
@@ -211,12 +214,19 @@ export class DataService {
     const logList = this.getLogs();
     if (logList && logList.some(x => x.Id === log.Id)) {
       const l =  logList.find(x => x.Id === log.Id);
-      l.CookiesEnabled = log.CookiesEnabled;
-      l.Details = log.Details;
-      l.IsTouchDevice = log.IsTouchDevice;
-      l.Message = log.Message;
-      l.Platform = log.Platform;
-      l.WebBrowser = log.WebBrowser;
+      for (const ll in log) {
+        l[ll] = log[ll];
+      }
+      // l.Time = log.Time;
+      // l.Name = log.Name;
+      // l.Message = log.Message;
+
+      // l.CookiesEnabled = log.CookiesEnabled;
+      // l.Details = log.Details;
+      // l.MaxTouchPoints = log.MaxTouchPoints;
+      // l.Message = log.Message;
+      // l.Platform = log.Platform;
+      // l.WebBrowser = log.WebBrowser;
     } else if (logList) {
       if (log.Id === 0) {
         if (logList.length > 0) {
