@@ -17,17 +17,15 @@ export class ErrorService implements ErrorHandler {
     const erm : ErrorLog = {
       Id : 0,
       Time : new Date(),
-      Name : "",
-      Message : "",
-      Details : "",
+      Name : error,
+      Message : error?.message ? error.message : error,
       Status : error?.Status ? error?.Status : 0,
       Url : "",
       WebBrowser : nav?.appCodeName + " " + nav?.appName + " " + nav?.appVersion,
       Culture : nav?.language,
       CookiesEnabled : nav?.cookieEnabled,
       MaxTouchPoints : nav?.maxTouchPoints,
-      Platform : nav?.platform,
-      Connection : ""
+      Platform : nav?.platform
     };
 
     this.data.setLog(erm);

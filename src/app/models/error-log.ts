@@ -3,7 +3,6 @@ export class ErrorLog {
     Time: Date;
     Name: string;
     Message: string;
-    Details?: string;
     Status?: number;
     Url?: string;
     WebBrowser: string;
@@ -11,5 +10,4 @@ export class ErrorLog {
     CookiesEnabled: boolean;
     MaxTouchPoints: number;
     Platform: string;
-    Connection: string;
 }
