@@ -27,7 +27,7 @@ export class PlanningOverviewPageComponent implements OnInit {
         Id: 0,
         Length: 0,
         Goal: 0,
-        Days : new Array()
+        Days: new Array()
       });
       this.reloadPlans();
   }

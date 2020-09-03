@@ -167,7 +167,7 @@ export class DataService {
   }
 
   getPlans(): Plan[] {
-    return this.getData('persons');
+    return this.getData('plans');
   }
 
   setPlan(plan: Plan): Plan {
