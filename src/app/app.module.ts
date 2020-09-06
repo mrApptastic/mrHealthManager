@@ -23,6 +23,9 @@ import { PlanningOverviewPageComponent } from './components/planning-overview-pa
 import { AbstractInputComponent } from './components/abstract-input/abstract-input.component';
 import { AbstractModelComponent } from './components/abstract-input/abstract-model.component';
 import { InputComponent } from './components/input/input.component';
+import { PersonOverviewPageComponent } from './components/person-overview-page/person-overview-page.component';
+import { ErrorLogOverviewPageComponent } from './components/error-log-overview-page/error-log-overview-page.component';
+import { ErrorLogPageComponent } from './components/error-log-page/error-log-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { InputComponent } from './components/input/input.component';
     PlanningOverviewPageComponent,
     AbstractInputComponent,
     AbstractModelComponent,
-    InputComponent
+    InputComponent,
+    PersonOverviewPageComponent,
+    ErrorLogOverviewPageComponent,
+    ErrorLogPageComponent
   ],
   imports: [
     BrowserModule,

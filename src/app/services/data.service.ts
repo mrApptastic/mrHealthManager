@@ -261,6 +261,38 @@ export class DataService {
     }
   }
 
+  setData(changes: any, type: string): any {
+    const dataObj = this.getDataObject();
+    const list = dataObj[type];
+
+    if (changes && list.some(x => x?.Id === changes?.Id)) {
+      const item =  list.find(x => x.Id === changes.Id);
+      for (const property in changes) {
+        item[property] = changes[property];
+      }
+    } else if (list) {
+      if (changes?.Id === 0) {
+        if (list.length > 0) {
+          changes.Id = list.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+        } else {
+          changes.Id = 1;
+        }
+      }
+      list.push(changes);
+    }
+    // save mangler.
+    // this.setLogs(dataObj);
+
+    return changes;
+
+  }
+
+  setDatas() {
+    const dataObj = this.getDataObject();
+    // dataObj.persons = persons;
+    this.setDataObject(dataObj);
+  }
+
   getDataObject(): Data {
     return JSON.parse(this.cookie.getLocal(this.data)) as Data;
   }

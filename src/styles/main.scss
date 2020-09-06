@@ -4,25 +4,25 @@ $retroYellow: rgb(252,238,193);
 
 /* Fonts */
 
-@font-face { 
-    font-family: 'Monty'; 
-    src: url('assets/fonts/Montserrat-Regular.woff') format('woff'), 
-         url('assets/fonts/Montserrat-Regular.ttf') format('truetype'); 
+@font-face {
+    font-family: 'Monty';
+    src: url('assets/fonts/Montserrat-Regular.woff') format('woff'),
+         url('assets/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 
-@font-face { 
-    font-family: 'Seaside'; 
-    src: url('assets/fonts/SEASRN.woff') format('woff'), 
-         url('assets/fonts/SEASRN.ttf') format('truetype'); 
+@font-face {
+    font-family: 'Seaside';
+    src: url('assets/fonts/SEASRN.woff') format('woff'),
+         url('assets/fonts/SEASRN.ttf') format('truetype');
 }
 
 body {
-    font-family: 'Monty';  
+    font-family: 'Monty';
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Seaside';   
+    font-family: 'Seaside';
 }
 
 /* CSS Animations  */
@@ -37,13 +37,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background: $retroBlue;
+  background: $retroBlue;
+    // background: url('/assets/media/Rays.png') $retroBlue;
+    // background-attachment: fixed;
+    // background-size: 100% 100%;
 
     /*
-background: url('../Media/Cloudy5.png') no-repeat center left, 
-            url('../Media/Cloudy4.png') no-repeat center left, 
-            url('../Media/Cloudy3.png') no-repeat center left, 
-            url('../Media/Cloudy2.png') no-repeat center left, 
+background: url('../Media/Cloudy5.png') no-repeat center left,
+            url('../Media/Cloudy4.png') no-repeat center left,
+            url('../Media/Cloudy3.png') no-repeat center left,
+            url('../Media/Cloudy2.png') no-repeat center left,
             url('../Media/Cloudy1.png') no-repeat center left,
             dodgerblue;
  -webkit-animation: backAndForth 45s;
@@ -63,10 +66,10 @@ background-attachment:fixed;
 }
 
 #navigation {
-    text-align: center; 
+    text-align: center;
     margin-top: 2vh;
     position: -webkit-sticky;
-    position: sticky; 
+    position: sticky;
     top: 0;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8),
         -1px -1px 2px black,
@@ -84,18 +87,18 @@ background-attachment:fixed;
         5px 4px #cdd2d5,
         5px 6px #808d93,
         6px 5px #cdd2d5,
-        6px 7px #808d93;       
+        6px 7px #808d93;
 }
 
         #navigation ul li {
             display: inline-block;
             padding-left: 2vw;
         }
-        
+
             #navigation ul li a {
-                // font-family: Verdana;                
+                // font-family: Verdana;
                 text-decoration: none;
-                color: $retroYellow;                
+                color: $retroYellow;
             }
 
 .retroButton {
@@ -163,7 +166,7 @@ input:focus {
     left: 75px;
     top: -15px;
   }
-  
+
   .female-icon {
     display: inline-block;
     margin: 50px;
@@ -191,4 +194,3 @@ input:focus {
     top: 127px;
     left: 26px;
   }
-  

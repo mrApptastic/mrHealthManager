@@ -7,6 +7,9 @@ import { ActivityPageComponent } from './components/activity-page/activity-page.
 import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PersonPageComponent } from './components/person-page/person-page.component';
 import { PlanningOverviewPageComponent } from './components/planning-overview-page/planning-overview-page.component';
+import { PersonOverviewPageComponent } from './components/person-overview-page/person-overview-page.component';
+import { ErrorLogOverviewPageComponent } from './components/error-log-overview-page/error-log-overview-page.component';
+import { ErrorLogPageComponent } from './components/error-log-page/error-log-page.component';
 
 const routes: Routes = [
   {
@@ -19,8 +22,20 @@ const routes: Routes = [
     component : MainPageComponent
   },
   {
+    path: 'Person',
+    component : PersonOverviewPageComponent
+  },
+  {
     path: 'Person/:Id',
     component : PersonPageComponent
+  },
+  {
+    path: 'ErrorLog',
+    component : ErrorLogOverviewPageComponent
+  },
+  {
+    path: 'ErrorLog/:Id',
+    component : ErrorLogPageComponent
   },
   {
     path: 'Planning',
