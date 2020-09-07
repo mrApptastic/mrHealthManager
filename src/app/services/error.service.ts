@@ -20,7 +20,7 @@ export class ErrorService implements ErrorHandler {
       Name : error,
       Message : error?.message ? error.message : error,
       Status : error?.Status ? error?.Status : 0,
-      Url : "",
+      Url : window.location.href,
       WebBrowser : nav?.appCodeName + " " + nav?.appName + " " + nav?.appVersion,
       Culture : nav?.language,
       CookiesEnabled : nav?.cookieEnabled,
@@ -30,13 +30,5 @@ export class ErrorService implements ErrorHandler {
 
     this.data.setLog(erm);
 
-  //   alert();
-  //  // const router = this.injector.get(Router);
-  //  if (Error instanceof HttpErrorResponse) {
-  //   console.log(error.status);
-  //  } else {
-  //   console.log(error);
-  //  }
-   // router.navigate(['Error']);
    }
  }
