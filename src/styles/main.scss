@@ -6,15 +6,15 @@ $retroYellow: rgb(252,238,193);
 
 @font-face {
     font-family: 'Monty';
-    src: url('assets/fonts/Montserrat-Regular.woff') format('woff'),
-         url('assets/fonts/Montserrat-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/Montserrat-Regular.woff') format('woff'),
+         url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');
 }
 
 
 @font-face {
     font-family: 'Seaside';
-    src: url('assets/fonts/SEASRN.woff') format('woff'),
-         url('assets/fonts/SEASRN.ttf') format('truetype');
+    src: url('../assets/fonts/SEASRN.woff') format('woff'),
+         url('../assets/fonts/SEASRN.ttf') format('truetype');
 }
 
 body {
