@@ -38,10 +38,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   background: $retroBlue;
-    // background: url('/assets/media/Rays.png') $retroBlue;
-    // background-attachment: fixed;
-    // background-size: 100% 100%;
-
     /*
 background: url('../Media/Cloudy5.png') no-repeat center left,
             url('../Media/Cloudy4.png') no-repeat center left,
@@ -193,4 +189,10 @@ input:focus {
     position: absolute;
     top: 127px;
     left: 26px;
+  }
+
+  #cpt {
+    background: url('/assets/media/Rays.png') $retroBlue;
+    background-attachment: fixed;
+    background-size: 100% 100%;
   }
