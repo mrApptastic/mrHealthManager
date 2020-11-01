@@ -26,6 +26,7 @@ import { InputComponent } from './components/input/input.component';
 import { PersonOverviewPageComponent } from './components/person-overview-page/person-overview-page.component';
 import { ErrorLogOverviewPageComponent } from './components/error-log-overview-page/error-log-overview-page.component';
 import { ErrorLogPageComponent } from './components/error-log-page/error-log-page.component';
+import { LogoComponent } from './components/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ErrorLogPageComponent } from './components/error-log-page/error-log-pag
     InputComponent,
     PersonOverviewPageComponent,
     ErrorLogOverviewPageComponent,
-    ErrorLogPageComponent
+    ErrorLogPageComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
