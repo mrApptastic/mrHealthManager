@@ -196,3 +196,13 @@ input:focus {
   //   background-attachment: fixed;
   //   background-size: 100% 100%;
   // }
+
+  #tls input,
+  #tls select,
+  #tls textarea {
+    border: 0.1em solid rgb(103, 169, 168);
+    font: 14px 'Monty', Verdana, Sans-Serif;
+    color:  rgb(103, 169, 168);
+    background:snow;
+    border-radius: 0.25rem;
+  }

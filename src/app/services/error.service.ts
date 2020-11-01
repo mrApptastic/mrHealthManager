@@ -17,7 +17,7 @@ export class ErrorService implements ErrorHandler {
     const erm : ErrorLog = {
       Id : 0,
       Time : new Date(),
-      Name : error,
+      Name : JSON.stringify(error),
       Message : error?.message ? error.message : error,
       Status : error?.Status ? error?.Status : 0,
       Url : window.location.href,

@@ -1,9 +1,11 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-basic-table',
   templateUrl: './basic-table.component.html',
-  styleUrls: ['./basic-table.component.scss']
+  styleUrls: ['./basic-table.component.scss'],
+  providers: [DatePipe]
 })
 export class BasicTableComponent implements OnInit, OnChanges {
   @Input() dataSource: any[];
@@ -16,7 +18,7 @@ export class BasicTableComponent implements OnInit, OnChanges {
   searchFilter: string;
   columns: any[];
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -42,6 +44,21 @@ export class BasicTableComponent implements OnInit, OnChanges {
 
   onDataChange(obj: any) {
     this.dataChange.emit(obj);
+  }
+
+  public readyForActionFilter(row: any, col: any) {
+    let returnValue = row[col];
+
+    /* Handle Special Cases */
+    if(col.toString().toLowerCase() === "gender") {
+      returnValue = returnValue.toString().toLowerCase() === "true" ? "Female" : "Male";
+    } else if (col.toString().toLowerCase() === "dateofbirth") {
+      returnValue =  this.datePipe.transform(returnValue, "dd/MM yyyy");
+    } else if (col.toString().toLowerCase() === "time") {
+      returnValue =  this.datePipe.transform(returnValue, "dd/MM yyyy HH:mm");
+    }
+
+    return returnValue;
   }
 
   private getColumns(data: any[]) {
