@@ -4,26 +4,26 @@ $retroYellow: rgb(252,238,193);
 
 /* Fonts */
 
-@font-face {
-    font-family: 'Monty';
-    src: url('../assets/fonts/Montserrat-Regular.woff') format('woff'),
-         url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');
-}
+// @font-face {
+//     font-family: 'Monty';
+//     src: url('../assets/fonts/Montserrat-Regular.woff') format('woff'),
+//          url('../assets/fonts/Montserrat-Regular.ttf') format('truetype');
+// }
 
 
-@font-face {
-    font-family: 'Seaside';
-    src: url('../assets/fonts/SEASRN.woff') format('woff'),
-         url('../assets/fonts/SEASRN.ttf') format('truetype');
-}
+// @font-face {
+//     font-family: 'Seaside';
+//     src: url('../assets/fonts/SEASRN.woff') format('woff'),
+//          url('../assets/fonts/SEASRN.ttf') format('truetype');
+// }
 
-body {
-    font-family: 'Monty';
-}
+// body {
+//     font-family: 'Monty';
+// }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Seaside';
-}
+// h1, h2, h3, h4, h5, h6 {
+//     font-family: 'Seaside';
+// }
 
 /* CSS Animations  */
 @-webkit-keyframes backAndForth {
@@ -191,8 +191,8 @@ input:focus {
     left: 26px;
   }
 
-  #cpt {
-    background: url('/assets/media/Rays.png') $retroBlue;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-  }
+  // #cpt {
+  //   background: url('/assets/media/Rays.png') $retroBlue;
+  //   background-attachment: fixed;
+  //   background-size: 100% 100%;
+  // }
