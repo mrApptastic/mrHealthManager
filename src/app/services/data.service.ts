@@ -83,19 +83,19 @@ export class DataService {
   }
 
   getSingleFood(id: number): Food {
-    return this.getSingleData('foodTypes', id) as Food;
+    return this.getSingleData('food', id) as Food;
   }
 
   getFood(): Food[] {
-    return this.getData('foodTypes') as Food[];
+    return this.getData('food') as Food[];
   }
 
   setSingleFood(food: Food): Food {
-    return this.setSingleData(food, "foodTypes") as Food;
+    return this.setSingleData(food, "food") as Food;
   }
 
   setFood(food: Food[]): Food[] {
-    return this.setData(food, 'foodTypes') as Food[];
+    return this.setData(food, 'food') as Food[];
   }
 
   /* Plans */

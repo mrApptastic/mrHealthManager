@@ -12,7 +12,7 @@ export class FoodPageComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.dataSource = this.data.getFoodTypes();
+      this.dataSource = this.data.getFood();
     }, 0);
   }
 
