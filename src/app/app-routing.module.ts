@@ -10,6 +10,7 @@ import { PlanningOverviewPageComponent } from './components/planning-overview-pa
 import { PersonOverviewPageComponent } from './components/person-overview-page/person-overview-page.component';
 import { ErrorLogOverviewPageComponent } from './components/error-log-overview-page/error-log-overview-page.component';
 import { ErrorLogPageComponent } from './components/error-log-page/error-log-page.component';
+import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'Food',
     component : FoodPageComponent
+  },
+  {
+    path: 'FoodTypes',
+    component : FoodTypePageComponent
   },
   {
     path: '**',

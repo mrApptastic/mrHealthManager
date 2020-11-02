@@ -26,6 +26,8 @@
         </tbody>
     </table>
 </div>
-<span *ngIf="!dataSource" class="mrTextC">
-    <h2>Henter data..</h2>
+<span *ngIf="!dataSource" class="spinnerBox">
+  <div>
+    <app-spinner></app-spinner>
+  </div>
 </span>

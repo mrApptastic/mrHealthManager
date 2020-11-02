@@ -1,5 +1,5 @@
 .containerBandit {
-    overflow-x: auto;    
+    overflow-x: auto;
 }
 
 .tableBandit {
@@ -35,9 +35,24 @@
     font-weight: bolder;
   }
 
-  .navRow:hover { 
+  .navRow:hover {
     background: rgb(103, 169, 168);
     color: rgb(252,238,193);
     font-weight: bolder;
     cursor: pointer;
+  }
+
+  .spinnerBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100wv;
+    padding: 0;
+    margin: 0;
+  }
+
+  .spinnerBox div {
+    width: 100px;
+    height: 100px;
   }
