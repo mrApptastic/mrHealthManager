@@ -4,9 +4,9 @@
         <input class="mrEnamel bigBox" type="string" (blur)="update(person)" [(ngModel)]="person.Name" />
     </div>
     <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
-        <div class="mr3 mrTxtC mrPadt2 mrPadb2">
+        <div class="mr4 mrTxtC mrPadt2 mrPadb2">
             <label>Gender:</label>
-            <select class="mrEnamel" (change)="person.Gender = person.Gender === true; update(person)" [(ngModel)]="person.Gender">
+            <select class="mrEnamel" (change)="updateGender($event.target.value)" [(ngModel)]="person.Gender">
                 <option value="true">Female</option>
                 <option value="false">Male</option>
             </select>
@@ -14,16 +14,33 @@
             <label>Date Of Birth:</label><input class="mrEnamel" type="date" (blur)="update(person)" [(ngModel)]="person.DateOfBirth" /><br/>
             <label>Age:</label>{{person.DateOfBirth | age}} years<br/>
         </div>
-        <div class="mr3 mrTxtC mrPadt2 mrPadb2">
+        <div class="mr2 mrTxtC mrPadt2 mrPadb2">
             <label>Height:</label> <input class="mrEnamel" type="text" (blur)="update(person)" [(ngModel)]="person.Height" /> cm<br/>
             <label>Weight:</label> <input class="mrEnamel" type="text" (blur)="update(person)" [(ngModel)]="person.Weight" /> kg<br/>
+            <label>Stride Length:</label> <input class="mrEnamel" type="text" (blur)="update(person)" [(ngModel)]="person.StrideLength" /> cm<br/>
         </div>
-        <div class="mr3 mrTxtC mrPadt2 mrPadb2">
+        <div class="mr4 mrTxtC mrPadt2 mrPadb2">
             <label>BMI:</label> {{person.Weight | bmi : person.Height }}<br/>
-            <label>BMR:</label> {{person.DateOfBirth | bmr : person.Gender : person.Weight : person.Height }} kCal<br/>
+            <label>BMR:</label> {{person.DateOfBirth | bmr : getGender() : person.Weight : person.Height }} kCal<br/>
         </div>
     </div>
+    <div class="mr2 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
+      <h2 class="mrTxtC">Consumption:</h2>
+      <app-basic-table [dataSource]="person.Consumption" editable="true"></app-basic-table>
+    </div>
+    <div class="mr2 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
+      <h2  class="mrTxtC">Activities:</h2>
+      <app-basic-table [dataSource]="person.Activities" editable="true"></app-basic-table>
+    </div>
+    <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5; overflow-x: auto;">
+      <div class="mrPad2">
+        <h2>BMI Curve (14 days):</h2>
+        <svg id="bmiGraph"></svg>
+      </div>
+    </div>
+
 </div>
+
 <!--
 <div class="mrCon75 mrPad5 marMar5">
 	<h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">Persons</h2>
@@ -35,5 +52,8 @@
 	</div>
 </div>
 -->
+<!--
 <svg id="bmiGraph"></svg>
+-->
+
 

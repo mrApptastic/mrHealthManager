@@ -82,4 +82,13 @@ export class PersonPageComponent implements OnInit {
     this.data.setPerson(person);
   }
 
+  updateGender(value) {
+    this.person.Gender = value;
+    this.data.setPerson(this.person);
+  }
+
+  getGender() {
+    return this.person.Gender.toString().toLowerCase() === "true";
+  }
+
 }
