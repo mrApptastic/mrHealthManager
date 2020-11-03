@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Food } from 'src/app/models/food';
+import { FoodType } from 'src/app/models/food-type';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -7,17 +10,24 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./food-page.component.scss']
 })
 export class FoodPageComponent implements OnInit {
-  dataSource: any[];
-  constructor(private data: DataService) { }
+  id: number;
+  food: Food;
+  types: FoodType[];
+  constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dataSource = this.data.getFood();
-    }, 0);
+    this.types = this.data.getFoodTypes();
+    this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
+    this.food = this.data.getSingleFood(this.id);
+
   }
 
-  update($event): void {
-    alert(JSON.stringify($event));
-    // this.data.setPerson($event);
+  update(food: Food) {
+    this.data.setSingleFood(food);
+  }
+
+  updateType(value) {
+    this.food.TypeId = value;
+    this.update(this.food);
   }
 }

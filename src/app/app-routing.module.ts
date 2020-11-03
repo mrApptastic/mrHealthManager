@@ -11,6 +11,7 @@ import { PersonOverviewPageComponent } from './components/person-overview-page/p
 import { ErrorLogOverviewPageComponent } from './components/error-log-overview-page/error-log-overview-page.component';
 import { ErrorLogPageComponent } from './components/error-log-page/error-log-page.component';
 import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
+import { FoodOverviewPageComponent } from './components/food-overview-page/food-overview-page.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   },
   {
     path: 'Food',
+    component : FoodOverviewPageComponent
+  },
+  {
+    path: 'Food/:Id',
     component : FoodPageComponent
   },
   {

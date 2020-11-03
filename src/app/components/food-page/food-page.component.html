@@ -1,8 +1,43 @@
 <div class="mrCon75 mrPad5 marMar5">
-	<h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">Food</h2>
-	<div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
+  <div class="mr1">
+      <input class="mrEnamel bigBox" type="string" (blur)="update(food)" [(ngModel)]="food.Name" />
+  </div>
+  <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
 		<div class="mrPad5 mrMar5">
-      <app-basic-table [dataSource]="dataSource" editable="false" (dataChange)="update($event)"></app-basic-table>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Calories:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Calories" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Proteins:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Proteins" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Fat:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Fat" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Carbohydrates:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Carbohydrates" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Fibres:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Fibres" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Calcium:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Calcium" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Alcohol:</label>
+        <input class="mrEnamel" type="text" (blur)="update(food)" [(ngModel)]="food.Alcohol" /> per gram <br/>
+      </div>
+      <div class="mr2 mrTxtC mrPadt2 mrPadb2">
+        <label>Type:</label>
+        <select *ngIf="types.length > 0" class="mrEnamel" (change)="updateType($event.target.value)" [(ngModel)]="food.TypeId">
+          <option *ngFor="let type of types" [value]="type.Id">{{type.Type}}</option>
+      </select>
+      </div>
     </div>
-	</div>
+  </div>
 </div>

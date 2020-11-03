@@ -29,6 +29,7 @@ import { ErrorLogPageComponent } from './components/error-log-page/error-log-pag
 import { LogoComponent } from './components/logo/logo.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
+import { FoodOverviewPageComponent } from './components/food-overview-page/food-overview-page.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { FoodTypePageComponent } from './components/food-type-page/food-type-pag
     ErrorLogPageComponent,
     LogoComponent,
     SpinnerComponent,
-    FoodTypePageComponent
+    FoodTypePageComponent,
+    FoodOverviewPageComponent
   ],
   imports: [
     BrowserModule,
