@@ -11,13 +11,24 @@ export class FoodTypePageComponent implements OnInit {
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.dataSource = this.data.getFoodTypes();
-    }, 0);
+    this.reloadData();
   }
 
   update($event): void {
-    alert(JSON.stringify($event));
-    // this.data.setPerson($event);
+    this.data.setFoodType($event);
+  }
+
+  addFoodType(): void {
+    this.data.setFoodType({
+      Id: 0,
+      Type : ""
+    });
+    this.reloadData();
+  }
+
+  reloadData(): void {
+    setTimeout(() => {
+      this.dataSource = this.data.getFoodTypes();
+    }, 0);
   }
 }
