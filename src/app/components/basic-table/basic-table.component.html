@@ -1,6 +1,6 @@
 <div *ngIf="dataSource" class="containerBandit">
     <div>
-        <input type="text" class="filterBandit" placeholder="Filter data" [(ngModel)]="searchFilter" />
+        <input type="text" class="filterBandit" placeholder="Filter data" [(ngModel)]="searchField" (ngModelChange)="handleSearch()" />
     </div>
     <table class="tableBandit">
         <thead>
