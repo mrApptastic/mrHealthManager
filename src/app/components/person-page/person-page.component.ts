@@ -5,7 +5,9 @@ import { debounceTime } from 'rxjs/operators';
 import { Activity } from 'src/app/models/activity';
 import { Food } from 'src/app/models/food';
 import { Person } from 'src/app/models/person';
+import { PersonActivity } from 'src/app/models/person-activity';
 import { PersonConsumption } from 'src/app/models/person-consumption';
+import { CalcService } from 'src/app/services/calc.service';
 import { DataService } from 'src/app/services/data.service';
 declare function dataHussar(element, dataset, settings): void;
 
@@ -24,17 +26,33 @@ export class PersonPageComponent implements OnInit {
   foodToInsertAmount: number;
   foodSearch: string;
   foodRequest = new Subject<string>();
+  actToInsert: Activity;
+  actToInsertAmount: number;
+  actSearch: string;
+  actRequest = new Subject<string>();
 
-  constructor(private route: ActivatedRoute, private data: DataService) {
+  constructor(private route: ActivatedRoute, private data: DataService, private calc: CalcService) {
     this.foodRequest
     .pipe(
-      debounceTime(1000))
+      debounceTime(1500))
     .subscribe(() => {
       const val = this.foodSearch.toLowerCase();
       const f = this.food.find(x => x.Name.toLowerCase().indexOf(val) !== -1);
       if (f) {
         this.foodToInsert = f;
         this.foodSearch = f.Name;
+      }
+    });
+
+    this.actRequest
+    .pipe(
+      debounceTime(1500))
+    .subscribe(() => {
+      const val = this.actSearch.toLowerCase();
+      const a = this.activities.find(x => x.Name.toLowerCase().indexOf(val) !== -1);
+      if (a) {
+        this.actToInsert = a;
+        this.actSearch = a.Name;
       }
     });
   }
@@ -75,10 +93,27 @@ export class PersonPageComponent implements OnInit {
     this.foodRequest.next();
   }
 
+  handleActivitySearch(): void {
+    this.actRequest.next();
+  }
+
   addFood(): void {
     this.person.Consumption.push({
       Name: this.foodToInsert.Name,
       KCal: this.foodToInsert.Calories * this.foodToInsertAmount
+    });
+    this.update(this.person);
+    this.reloadData();
+    this.foodSearch = null;
+    this.foodToInsert = null;
+    this.foodToInsertAmount = null;
+  }
+
+  addActivity(): void {
+    this.person.Activities.push({
+      Name: this.actToInsert.Name,
+      KCal: this.actToInsert.kCal * this.actToInsertAmount,
+      Minutes: 0
     });
     this.update(this.person);
     this.reloadData();
@@ -101,11 +136,35 @@ export class PersonPageComponent implements OnInit {
     }
   }
 
+  deleteActivity($event): void {
+    const ok = confirm("Are you sure you want to delete this item?");
+
+    if (ok) {
+      const item = $event as PersonActivity;
+      const index = this.person.Activities.findIndex(x => x.Name === item.Name);
+      if (index >= 0) {
+        this.person.Activities.splice(index, 1);
+        this.data.setPerson(this.person);
+        this.reloadData();
+      }
+    }
+  }
+
   getTotalConsumption() {
     let sum = 0;
 
     for (const uha of this.person.Consumption) {
       sum += uha.KCal;
+    }
+
+    return sum;
+  }
+
+  getTotalActivities() {
+    let sum = this.calc.calculateBMR(this.calc.calculateAge(this.person.DateOfBirth), this.person.Gender, this.person.Weight, this.person.Height);
+
+    for (const uha of this.person.Activities) {
+      sum += uha.KCal * uha.Minutes;
     }
 
     return sum;
