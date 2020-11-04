@@ -25,12 +25,22 @@
         </div>
     </div>
     <div class="mr2 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
-      <h2 class="mrTxtC">Consumption:</h2>
-      <app-basic-table [dataSource]="person.Consumption" editable="true"></app-basic-table>
+      <h2 class="mrTxtC">Consumption: <span *ngIf="person?.Consumption.length > 0">{{getTotalConsumption() | number}}</span></h2>
+      <app-basic-table [dataSource]="person.Consumption" (rowClick)="deleteFood($event)" editable="false"></app-basic-table>
+      <div class="mr1 mrTxtC">
+        <input class="mrEnamel" placeholder="Insert Food" type="text" [(ngModel)]="foodSearch" (ngModelChange)="handleFoodSearch()" /><br/>
+        <ng-container *ngIf="foodToInsert">
+          <input class="mrEnamel" placeholder="Amount (grams)" type="text" [(ngModel)]="foodToInsertAmount" />
+        </ng-container>
+        <ng-container *ngIf="foodToInsert && foodToInsertAmount">
+          <br/>
+          <button class="mrsRetroYellow mrRetroBlue mrEnamel mrPointer mrRight mrMarb1 mrMarr1 retroButton" (click)="addFood()">Add Food</button>
+        </ng-container>
+      </div>
     </div>
     <div class="mr2 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5;">
       <h2  class="mrTxtC">Activities:</h2>
-      <app-basic-table [dataSource]="person.Activities" editable="true"></app-basic-table>
+      <app-basic-table [dataSource]="person.Activities" editable="false"></app-basic-table>
     </div>
     <div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel" style="line-height: 1.5; overflow-x: auto;">
       <div class="mrPad2">

@@ -78,6 +78,7 @@ export class BasicTableComponent implements OnInit, OnChanges {
               col.toString().toLowerCase() === "carbohydrates" ||
               col.toString().toLowerCase() === "fibres" ||
               col.toString().toLowerCase() === "calcium" ||
+              col.toString().toLowerCase() === "kcal" ||
               col.toString().toLowerCase() === "alcohol") {
       returnValue =  this.numberPipe.transform(returnValue);
     }
