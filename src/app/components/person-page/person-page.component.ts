@@ -63,22 +63,18 @@ export class PersonPageComponent implements OnInit {
     this.reloadData();
     this.food = this.data.getFood();
     this.activities = this.data.getActivities().filter(x => x.UseKmH !== true);
-    setTimeout(() => {
-      this.bmiGraph = new dataHussar('bmiGraph', [
-        {Id: 1, Label: '01-2013', Value: 7},
-        {Id: 2, Label: '02-2013', Value: 5}
-        ], {});
-    }, 0);
   }
 
   reloadData() {
     setTimeout(() => {
       this.person = this.data.getPerson(this.id);
+      this.drawBMIGraph();
     }, 0);
   }
 
   update(person: Person) {
     this.data.setPerson(person);
+    this.drawBMIGraph();
   }
 
   updateGender(value) {
@@ -172,6 +168,34 @@ export class PersonPageComponent implements OnInit {
     }
 
     return sum;
+  }
+
+  drawBMIGraph() {
+    const today = new Date();
+    const dateArr = new Array();
+    const balance = (this.getTotalActivities() - this.getTotalConsumption()) / 1000;
+
+    for (let i = 0; i <= 8; i++) {
+      const currentDay = this.addDays(today, 7 * i);
+
+      dateArr.push(
+        {
+          Id: i + 1,
+          Label: currentDay.toLocaleDateString(),
+          Value: this.calc.calculateBMI((this.person.Weight - (balance * i)), this.person.Height)
+        });
+    }
+
+    setTimeout(() => {
+      this.bmiGraph = new dataHussar('bmiGraph', dateArr, {});
+    }, 0);
+
+  }
+
+  private addDays(date, days): Date {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 
 }
