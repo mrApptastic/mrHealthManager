@@ -1,5 +1,5 @@
 
-<div class="mrCon75 mrPad5 marMar5">
+<div class="mrCon75 mrPad5 marMar5" *ngIf="person">
     <div class="mr1">
         <input class="mrEnamel bigBox" type="string" (blur)="update(person)" [(ngModel)]="person.Name" />
     </div>
@@ -42,11 +42,15 @@
       <h2 class="mrTxtC">Activities: <span *ngIf="person?.Activities.length > 0">{{getTotalActivities() | number}}&nbsp;KCal</span></h2>
       <app-basic-table [dataSource]="person.Activities" (rowClick)="deleteActivity($event)" editable="false"></app-basic-table>
       <div class="mr1 mrTxtC">
-        <input class="mrEnamel" placeholder="Insert Food" type="text" [(ngModel)]="actSearch" (ngModelChange)="handleActivitySearch()" /><br/>
+        <input class="mrEnamel" placeholder="Insert Activity" type="text" [(ngModel)]="actSearch" (ngModelChange)="handleActivitySearch()" /><br/>
         <ng-container *ngIf="actToInsert">
-          <input class="mrEnamel" placeholder="Amount (grams)" type="text" [(ngModel)]="actToInsertAmount" />
+          <input class="mrEnamel" placeholder="Seconds" type="text" [(ngModel)]="actToInsertAmount" />
         </ng-container>
-        <ng-container *ngIf="actToInsert && actToInsertAmount">
+        <!-- <ng-container *ngIf="actToInsertAmount">
+          <br/>
+          <input class="mrEnamel" placeholder="km/H" type="text" [(ngModel)]="actToInsertKmH" />
+        </ng-container> -->
+        <ng-container *ngIf="actToInsert && actToInsertAmount && (actToInsertKmH || !actToInsert?.UseKmH)">
           <br/>
           <button class="mrsRetroYellow mrRetroBlue mrEnamel mrPointer mrRight mrMarb1 mrMarr1 retroButton" (click)="addActivity()">Add Acticity</button>
         </ng-container>

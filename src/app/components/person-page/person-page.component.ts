@@ -28,6 +28,7 @@ export class PersonPageComponent implements OnInit {
   foodRequest = new Subject<string>();
   actToInsert: Activity;
   actToInsertAmount: number;
+  actToInsertKmH: number;
   actSearch: string;
   actRequest = new Subject<string>();
 
@@ -61,7 +62,7 @@ export class PersonPageComponent implements OnInit {
     this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
     this.reloadData();
     this.food = this.data.getFood();
-    this.activities = this.data.getActivities();
+    this.activities = this.data.getActivities().filter(x => x.UseKmH !== true);
     setTimeout(() => {
       this.bmiGraph = new dataHussar('bmiGraph', [
         {Id: 1, Label: '01-2013', Value: 7},
@@ -112,14 +113,15 @@ export class PersonPageComponent implements OnInit {
   addActivity(): void {
     this.person.Activities.push({
       Name: this.actToInsert.Name,
-      KCal: this.actToInsert.kCal * this.actToInsertAmount,
-      Minutes: 0
+      KCal: this.actToInsert.kCal * this.actToInsertAmount * 60 * (this.actToInsertKmH ? this.actToInsertKmH : 1),
+      Minutes: this.actToInsertAmount / 60
     });
     this.update(this.person);
     this.reloadData();
-    this.foodSearch = null;
-    this.foodToInsert = null;
-    this.foodToInsertAmount = null;
+    this.actSearch = null;
+    this.actToInsert = null;
+    this.actToInsertAmount = null;
+    this.actToInsertKmH = null;
   }
 
   deleteFood($event): void {
@@ -161,10 +163,12 @@ export class PersonPageComponent implements OnInit {
   }
 
   getTotalActivities() {
-    let sum = this.calc.calculateBMR(this.calc.calculateAge(this.person.DateOfBirth), this.person.Gender, this.person.Weight, this.person.Height);
+    let sum = 0;
+
+    sum = parseFloat(this.calc.calculateBMR(this.calc.calculateAge(this.person.DateOfBirth), this.person.Gender, this.person.Weight, this.person.Height));
 
     for (const uha of this.person.Activities) {
-      sum += uha.KCal * uha.Minutes;
+      sum += uha.KCal;
     }
 
     return sum;

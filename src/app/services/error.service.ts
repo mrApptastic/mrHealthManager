@@ -21,7 +21,7 @@ export class ErrorService implements ErrorHandler {
       Message : error?.message ? error.message : error,
       Status : error?.Status ? error?.Status : 0,
       Url : window.location.href,
-      WebBrowser : nav?.appCodeName + " " + nav?.appName + " " + nav?.appVersion,
+      WebBrowser : nav?.userAgent,
       Culture : nav?.language,
       CookiesEnabled : nav?.cookieEnabled,
       MaxTouchPoints : nav?.maxTouchPoints,
