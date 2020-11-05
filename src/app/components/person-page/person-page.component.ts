@@ -96,7 +96,7 @@ export class PersonPageComponent implements OnInit {
 
   addFood(): void {
     this.person.Consumption.push({
-      Name: this.foodToInsert.Name,
+      Name: this.foodToInsert.Name + " (" + this.foodToInsertAmount + " g)",
       KCal: this.foodToInsert.Calories * this.foodToInsertAmount
     });
     this.update(this.person);
