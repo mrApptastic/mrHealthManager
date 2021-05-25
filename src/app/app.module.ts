@@ -4,17 +4,12 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BmiPipe } from './pipes/bmi.pipe';
-import { BmrPipe } from './pipes/bmr.pipe';
-import { AgePipe } from './pipes/age.pipe';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ErrorService } from './services/error.service';
 import { InterceptorService } from './services/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicTableComponent } from './components/basic-table/basic-table.component';
-import { SortPipe } from './pipes/sort.pipe';
-import { SearchPipe } from './pipes/search.pipe';
 import { ActivityPageComponent } from './components/activity-page/activity-page.component';
 import { FoodPageComponent } from './components/food-page/food-page.component';
 import { PlanningPageComponent } from './components/planning-page/planning-page.component';
@@ -30,18 +25,14 @@ import { LogoComponent } from './components/logo/logo.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
 import { FoodOverviewPageComponent } from './components/food-overview-page/food-overview-page.component';
+import { MrMr2Module } from 'mr-mr2';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BmiPipe,
-    BmrPipe,
-    AgePipe,
     MainPageComponent,
     ErrorPageComponent,
     BasicTableComponent,
-    SortPipe,
-    SearchPipe,
     ActivityPageComponent,
     FoodPageComponent,
     PlanningPageComponent,
@@ -62,7 +53,8 @@ import { FoodOverviewPageComponent } from './components/food-overview-page/food-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MrMr2Module
   ],
   providers: [
     { provide: ErrorHandler, useClass: ErrorService},
