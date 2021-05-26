@@ -122,7 +122,14 @@ export class PersonPageComponent implements OnInit {
 
   addActivityFromStrides(): void {
     const ib = prompt("Add number of strides");
-    // this.actToInsertKmH = this.person.StrideLength *
+    if (ib && !isNaN(parseInt(ib, 10))) {
+      const distance = (this.person.StrideLength * parseInt(ib, 10)) / 100;
+      console.log(distance);
+      const amount = 5 / (distance / 1000);
+      console.log(amount);
+      // this.actToInsertAmount = (this.actToInsertKmH / (distance / 1000));
+      // this.addActivity();
+    }
   }
 
   deleteFood($event): void {
