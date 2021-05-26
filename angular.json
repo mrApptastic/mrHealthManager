@@ -129,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mrHealthManager"
+    }
+  },
+  "defaultProject": "mrHealthManager",
+  "cli": {
+    "analytics": false
+  }
 }
