@@ -26,8 +26,8 @@
         </tbody>
     </table>
 </div>
-<span *ngIf="!dataSource" class="spinnerBox">
+<span *ngIf="!dataSource && spinner" class="spinnerBox">
   <div>
-    <app-spinner></app-spinner>
+    <mr-spinner [image]="spinner" [text]="spinnerText"></mr-spinner>
   </div>
 </span>

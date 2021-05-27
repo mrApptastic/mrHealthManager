@@ -2,7 +2,7 @@
 	<h2 class="mrH1 mrRoddy mrMart2 mrMarb2 mrsRetroYellow">Food Types</h2>
 	<div class="mr1 mrShadow mrRetroYellow mrMart2 mrMarb2 mrEnamel">
 		<div class="mrPad5 mrMar5">
-      <app-basic-table [dataSource]="dataSource" editable="true" (dataChange)="update($event)"></app-basic-table>
+      <app-basic-table [dataSource]="dataSource" editable="true" [spinner]="'/assets/media/Rays.png'" (dataChange)="update($event)"></app-basic-table>
       <button class="mrsRetroYellow mrRetroBlue mrEnamel mrPointer mrRight mrMarb1 mrMarr1 retroButton" (click)="addFoodType()">Add Food Type</button>
     </div>
 	</div>

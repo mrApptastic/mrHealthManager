@@ -12,6 +12,8 @@ import { DatePipe, DecimalPipe } from '@angular/common';
 export class BasicTableComponent implements OnInit, OnChanges {
   @Input() dataSource: any[];
   @Input() editable: any;
+  @Input() spinner: string;
+  @Input() spinnerText: string;
   @Output() rowClick = new EventEmitter<any>();
   @Output() dataChange = new EventEmitter<any>();
   searchRequest = new Subject<string>();
@@ -33,6 +35,10 @@ export class BasicTableComponent implements OnInit, OnChanges {
               }
 
   ngOnInit(): void {
+    if (!this.spinnerText) {
+      this.spinnerText = "Loading data...";
+    }
+
     this.loadData();
   }
 
