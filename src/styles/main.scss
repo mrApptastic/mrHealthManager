@@ -206,3 +206,11 @@ input:focus {
     background:snow;
     border-radius: 0.25rem;
   }
+
+.filterBandit {
+  font-family: 'Monty' !important;
+}
+
+.filterBandit::placeholder {
+  font-family: 'Monty' !important;
+}

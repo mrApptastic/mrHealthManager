@@ -74,18 +74,13 @@ export class BasicTableComponent implements OnInit, OnChanges {
     /* Handle Special Cases */
     if(col.toString().toLowerCase() === "gender") {
       returnValue = returnValue.toString().toLowerCase() === "true" ? "Female" : "Male";
-    } else if (col.toString().toLowerCase() === "dateofbirth") {
+    } else if (row[col].toString().toLowerCase() === "true") {
+      returnValue = "Yes";
+    } else if (row[col].toString().toLowerCase() === "false") {
+      returnValue = "No";
+    } else if (!isNaN(Date.parse(row[col]))) {
       returnValue =  this.datePipe.transform(returnValue, "dd/MM yyyy");
-    } else if (col.toString().toLowerCase() === "time") {
-      returnValue =  this.datePipe.transform(returnValue, "dd/MM yyyy HH:mm");
-    } else if (col.toString().toLowerCase() === "calories" ||
-              col.toString().toLowerCase() === "proteins" ||
-              col.toString().toLowerCase() === "fat" ||
-              col.toString().toLowerCase() === "carbohydrates" ||
-              col.toString().toLowerCase() === "fibres" ||
-              col.toString().toLowerCase() === "calcium" ||
-              col.toString().toLowerCase() === "kcal" ||
-              col.toString().toLowerCase() === "alcohol") {
+    } else if (!isNaN(row[col])) {
       returnValue =  this.numberPipe.transform(returnValue);
     }
 
