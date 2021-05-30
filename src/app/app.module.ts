@@ -26,6 +26,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
 import { FoodOverviewPageComponent } from './components/food-overview-page/food-overview-page.component';
 import { MrMr2Module } from 'mr-mr2';
+import { MessageBoxComponent } from './components/message-box/message-box.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { MrMr2Module } from 'mr-mr2';
     LogoComponent,
     SpinnerComponent,
     FoodTypePageComponent,
-    FoodOverviewPageComponent
+    FoodOverviewPageComponent,
+    MessageBoxComponent,
+    SearchBoxComponent
   ],
   imports: [
     BrowserModule,
