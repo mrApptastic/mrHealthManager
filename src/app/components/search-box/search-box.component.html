@@ -8,5 +8,5 @@
 (focus)="onFocus.next()"
 [(ngModel)]="value">
 <select [class]="selectClass">
-  <option *ngFor="let data of dataSource | filter : value"></option>
+  <option *ngFor="let data of dataSource | filter : value" [value]="data[selectValue]">{{data[selectLabel]}}</option>
 </select>
