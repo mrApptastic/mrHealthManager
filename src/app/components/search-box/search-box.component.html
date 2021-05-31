@@ -1,4 +1,12 @@
-<input type="text" [(ngModel)]="searchText">
-<select>
-  <option *ngFor="let data of dataSource | filter : searchText"></option>
+<input [id]="cid"
+[class]="inputClass"
+[type]="type"
+[placeholder]="placeholder"
+[readonly]="inputReadonly"
+[required]="inputRequired"
+(blur)="onBlur.next()"
+(focus)="onFocus.next()"
+[(ngModel)]="value">
+<select [class]="selectClass">
+  <option *ngFor="let data of dataSource | filter : value"></option>
 </select>
