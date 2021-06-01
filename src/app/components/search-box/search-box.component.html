@@ -1,12 +1,14 @@
-<input [id]="cid"
-[class]="inputClass"
-[type]="type"
-[placeholder]="placeholder"
-[readonly]="inputReadonly"
-[required]="inputRequired"
-(blur)="onBlur.next()"
-(focus)="onFocus.next()"
-[(ngModel)]="value">
-<select [class]="selectClass">
-  <option *ngFor="let data of dataSource | filter : value" [value]="data[selectValue]">{{data[selectLabel]}}</option>
-</select>
+<div class="searchBoxWrapper">
+  <input [id]="cid"
+  [class]="inputClass"
+  [type]="type"
+  [placeholder]="placeholder"
+  [readonly]="inputReadonly"
+  [required]="inputRequired"
+  (blur)="onBlur.next();"
+  (focus)="onFocus.next(); hideSearch = false"
+  [(ngModel)]="value">
+  <select [hidden]="hideSearch" [class]="selectClass">
+    <option *ngFor="let data of dataSource | filter : value" [value]="data[selectValue]" (click)="value = $event.target.innerHTML; hideSearch = true">{{data[selectLabel]}}</option>
+  </select>
+</div>

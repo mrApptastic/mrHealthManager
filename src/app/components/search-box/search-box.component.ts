@@ -23,6 +23,7 @@ export class SearchBoxComponent extends AbstractInputComponent implements OnInit
   @Input("selectValue") selectValue: string;
   @Input("selectClass") selectClass: string;
   cid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+  hideSearch = true;
 
   ngOnInit(): void {
     if (!this.inputClass) {

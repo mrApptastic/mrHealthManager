@@ -1,0 +1,14 @@
+
+.searchBoxWrapper {
+  position: relative;
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  select {
+    position: absolute;
+    top: 32px;
+    left: 0;
+  }
+}
