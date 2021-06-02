@@ -31,7 +31,8 @@ export class PersonPageComponent implements OnInit {
   actToInsertKmH: number;
   actSearch: string;
   actRequest = new Subject<string>();
-
+  searchText = "";
+  //     "mr-mr2": "file:../mrMr2/mrMr/dist/mr-mr2",
   constructor(private route: ActivatedRoute, private data: DataService, private calc: CalcService) {
     this.foodRequest
     .pipe(

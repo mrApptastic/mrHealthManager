@@ -43,6 +43,7 @@
       <app-basic-table [dataSource]="person.Activities" (rowClick)="deleteActivity($event)" editable="false"></app-basic-table>
       <div class="mr1 mrTxtC">
         <input class="mrEnamel" placeholder="Insert Activity" type="text" [(ngModel)]="actSearch" (ngModelChange)="handleActivitySearch()" /><br/>
+        <app-search-box [dataSource]="food" inputClass="mrEnamel" selectClass="mrEnamel" selectValue="Id" selectLabel="Name" [(ngModel)]="searchText"></app-search-box>
         <ng-container *ngIf="actToInsert">
           <input class="mrEnamel" placeholder="Seconds" type="text" [(ngModel)]="actToInsertAmount" />
         </ng-container>
