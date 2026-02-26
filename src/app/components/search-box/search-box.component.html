@@ -9,6 +9,6 @@
   (focus)="onFocus.next(); hideSearch = false"
   [(ngModel)]="value">
   <select [hidden]="hideSearch" [class]="selectClass">
-    <option *ngFor="let data of dataSource | filter : value" [value]="data[selectValue]" (click)="value = $event.target.innerHTML; hideSearch = true">{{data[selectLabel]}}</option>
+    <option *ngFor="let data of dataSource | filter : value" [value]="data[selectValue]" (click)="value = $any($event.target).innerHTML; hideSearch = true">{{data[selectLabel]}}</option>
   </select>
 </div>

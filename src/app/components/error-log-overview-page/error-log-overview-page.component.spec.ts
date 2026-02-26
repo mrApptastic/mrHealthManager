@@ -1,4 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
 
 import { ErrorLogOverviewPageComponent } from './error-log-overview-page.component';
 
@@ -6,9 +9,11 @@ describe('ErrorLogOverviewPageComponent', () => {
   let component: ErrorLogOverviewPageComponent;
   let fixture: ComponentFixture<ErrorLogOverviewPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorLogOverviewPageComponent ]
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      declarations: [ ErrorLogOverviewPageComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

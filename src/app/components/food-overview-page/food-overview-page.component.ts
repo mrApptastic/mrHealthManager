@@ -4,12 +4,13 @@ import { Food } from 'src/app/models/food';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-overview-page',
   templateUrl: './food-overview-page.component.html',
   styleUrls: ['./food-overview-page.component.scss']
 })
 export class FoodOverviewPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
   constructor(private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class FoodOverviewPageComponent implements OnInit {
     }, 0);
   }
 
-  update($event): void {
+  update($event: any): void {
     const f = $event as Food;
     this.router.navigateByUrl('/Food/' + f.Id);
   }

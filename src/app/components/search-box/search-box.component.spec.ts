@@ -1,5 +1,8 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
+import { FilterPipe } from '../../pipes/filter.pipe';
 import { SearchBoxComponent } from './search-box.component';
 
 describe('SearchBoxComponent', () => {
@@ -8,7 +11,9 @@ describe('SearchBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBoxComponent ]
+      imports: [FormsModule],
+      declarations: [ SearchBoxComponent, FilterPipe ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

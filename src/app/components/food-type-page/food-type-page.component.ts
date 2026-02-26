@@ -2,19 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-type-page',
   templateUrl: './food-type-page.component.html',
   styleUrls: ['./food-type-page.component.scss']
 })
 export class FoodTypePageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
     this.reloadData();
   }
 
-  update($event): void {
+  update($event: any): void {
     this.data.setFoodType($event);
   }
 

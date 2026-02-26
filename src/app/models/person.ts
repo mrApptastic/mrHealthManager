@@ -4,15 +4,15 @@ import { PersonHistory } from './person-history';
 import { Plan } from './plan';
 
 export class Person {
-    Id: number;
-    Name: string;
-    Height: number;
-    Weight: number;
-    DateOfBirth: string;
-    Gender: boolean;
+    Id!: number;
+    Name!: string;
+    Height!: number;
+    Weight!: number;
+    DateOfBirth!: string;
+    Gender!: boolean;
     StrideLength?: number;
-    Activities: PersonActivity[];
-    Consumption: PersonConsumption[];
-    History: PersonHistory[];
-    Plans: Plan[];
+    Activities!: PersonActivity[];
+    Consumption!: PersonConsumption[];
+    History!: PersonHistory[];
+    Plans!: Plan[];
 }

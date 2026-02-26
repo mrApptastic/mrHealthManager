@@ -5,12 +5,13 @@ import { Person } from 'src/app/models/person';
 import { Plan } from 'src/app/models/plan';
 
 @Component({
+  standalone: false,
   selector: 'app-person-overview-page',
   templateUrl: './person-overview-page.component.html',
   styleUrls: ['./person-overview-page.component.scss']
 })
 export class PersonOverviewPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
 
   constructor(private data: DataService, private router: Router) { }
 
@@ -23,7 +24,7 @@ export class PersonOverviewPageComponent implements OnInit {
     this.reloadPersons();
   }
 
-  update($event): void {
+  update($event: any): void {
     // alert(JSON.stringify($event));
     const per = $event as Person;
     this.router.navigateByUrl('/Person/' + per.Id);
@@ -38,10 +39,10 @@ export class PersonOverviewPageComponent implements OnInit {
         DateOfBirth: '',
         Gender: false,
         StrideLength: 0,
-        Activities: new Array(),
-        Consumption: new Array(),
-        History: new Array(),
-        Plans: new Array()
+        Activities: [],
+        Consumption: [],
+        History: [],
+        Plans: []
       });
       this.reloadPersons();
   }
@@ -68,7 +69,7 @@ $scope.personStats.BMR = calcService.calculateBMR(
     $scope.personStats.Height
 );
 function drawBMIGraph (width) {
-    var ib = new dataHussar("BMI_Graph",$scope.personStats.History, { width: width });
+    const ib = new dataHussar("BMI_Graph",$scope.personStats.History, { width: width });
 }
 setTimeout(function () {
     drawBMIGraph(document.getElementById("BMI_Box").offsetWidth);
@@ -85,7 +86,7 @@ $scope.foodTypes = dataService.getFoodTypes();
 $scope.food = dataService.getFood();
 $scope.activities = dataService.getActivities();
 $scope.getTotal = function (arr, obj) {
-	var total = 0;
+	const total = 0;
 	for (let i = 0; i < arr.length; i++) {
 		total += parseFloat(arr[i][obj]);
 	}

@@ -34,7 +34,7 @@
       </div>
       <div class="mr2 mrTxtC mrPadt2 mrPadb2">
         <label>Type:</label>
-        <select *ngIf="types.length > 0" class="mrEnamel" (change)="updateType($event.target.value)" [(ngModel)]="food.TypeId">
+        <select *ngIf="types.length > 0" class="mrEnamel" (change)="updateType($any($event.target).value)" [(ngModel)]="food.TypeId">
           <option *ngFor="let type of types" [value]="type.Id">{{type.Type}}</option>
       </select>
       </div>

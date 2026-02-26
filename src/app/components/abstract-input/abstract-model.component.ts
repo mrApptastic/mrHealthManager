@@ -2,6 +2,7 @@ import { ControlValueAccessor } from '@angular/forms';
 import { Component, Input, ChangeDetectorRef, Injector, Type } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-abstract-model',
   templateUrl: './abstract-model.component.html',
   styleUrls: ['./abstract-model.component.scss']
@@ -10,7 +11,7 @@ import { Component, Input, ChangeDetectorRef, Injector, Type } from '@angular/co
 export class AbstractModelComponent<T = any> implements ControlValueAccessor {
 
   @Input()
-  disabled: boolean;
+  disabled = false;
 
   @Input()
   set value(value: T) {
@@ -22,10 +23,10 @@ export class AbstractModelComponent<T = any> implements ControlValueAccessor {
     return this._value;
   }
 
-  onChange: (value: T) => {};
-  onTouched: () => {};
+  onChange!: (value: T) => void;
+  onTouched!: () => void;
 
-  protected _value: T;
+  protected _value!: T;
   protected cdRef: ChangeDetectorRef;
 
   constructor(public injector: Injector) {

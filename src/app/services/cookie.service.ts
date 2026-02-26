@@ -36,7 +36,7 @@ export class CookieService {
   /* Method getting a value stored in localStorage. Falls back to sessionStorage. */
   getLocal(name: string): string {
       if (this.hasAccepted()) {
-          return localStorage.getItem(name);
+          return localStorage.getItem(name) || '';
       } else {
         return this.getSession(name);
       }
@@ -54,7 +54,7 @@ export class CookieService {
   /* Method getting a value stored in sessionStorage. */
   getSession(name: string): string {
     if (sessionStorage) {
-        return sessionStorage.getItem(name);
+        return sessionStorage.getItem(name) || '';
     } else {
       return '';
     }

@@ -4,18 +4,19 @@ import { ErrorLog } from 'src/app/models/error-log';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-error-log-page',
   templateUrl: './error-log-page.component.html',
   styleUrls: ['./error-log-page.component.scss']
 })
 export class ErrorLogPageComponent implements OnInit {
-  id: number;
-  log: ErrorLog;
+  id = 0;
+  log!: ErrorLog;
 
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
+    this.id = parseInt(this.route.snapshot.paramMap.get('Id') || '0', 10);
 
     this.log = this.data.getLog(this.id);
   }

@@ -5,19 +5,20 @@ import { FoodType } from 'src/app/models/food-type';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-page',
   templateUrl: './food-page.component.html',
   styleUrls: ['./food-page.component.scss']
 })
 export class FoodPageComponent implements OnInit {
-  id: number;
-  food: Food;
-  types: FoodType[];
+  id = 0;
+  food!: Food;
+  types: FoodType[] = [];
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
     this.types = this.data.getFoodTypes();
-    this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
+    this.id = parseInt(this.route.snapshot.paramMap.get('Id') || '0', 10);
     this.food = this.data.getSingleFood(this.id);
 
   }
@@ -26,7 +27,7 @@ export class FoodPageComponent implements OnInit {
     this.data.setSingleFood(food);
   }
 
-  updateType(value) {
+  updateType(value: any) {
     this.food.TypeId = value;
     this.update(this.food);
   }

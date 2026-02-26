@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-planning-overview-page',
   templateUrl: './planning-overview-page.component.html',
   styleUrls: ['./planning-overview-page.component.scss']
 })
 export class PlanningOverviewPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
 
   constructor(private router: Router, private data: DataService) { }
 
@@ -17,7 +18,7 @@ export class PlanningOverviewPageComponent implements OnInit {
     this.reloadPlans();
   }
 
-  update($event): void {
+  update($event: any): void {
     const pl = $event as Plan;
     this.router.navigateByUrl('/Plan/' + pl.Id);
   }
@@ -27,7 +28,7 @@ export class PlanningOverviewPageComponent implements OnInit {
         Id: 0,
         Length: 0,
         Goal: 0,
-        Days: new Array()
+        Days: []
       });
       this.reloadPlans();
   }

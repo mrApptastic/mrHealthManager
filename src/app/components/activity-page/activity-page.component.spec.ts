@@ -1,4 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ActivityPageComponent } from './activity-page.component';
 
@@ -6,9 +8,11 @@ describe('ActivityPageComponent', () => {
   let component: ActivityPageComponent;
   let fixture: ComponentFixture<ActivityPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityPageComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [ ActivityPageComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

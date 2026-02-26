@@ -137,7 +137,7 @@ export class DataService {
   }
 
   getSingleData(type: string, id: number): any {
-    return this.getData(type).find(x => x.Id === id);
+    return this.getData(type).find((x: any) => x.Id === id);
   }
 
   getData(type: string): any {
@@ -145,7 +145,7 @@ export class DataService {
       const dataObj = this.getDataObject() as Data;
       return dataObj[type];
     }  else {
-      throw new console.error('Unable to get data ' + type);
+      throw new Error('Unable to get data ' + type);
     }
   }
 
@@ -153,15 +153,15 @@ export class DataService {
     const dataObj = this.getDataObject();
     const list = dataObj[type];
 
-    if (changes && list.some(x => x?.Id === changes?.Id)) {
-      const item =  list.find(x => x.Id === changes.Id);
+    if (changes && list.some((x: any) => x?.Id === changes?.Id)) {
+      const item =  list.find((x: any) => x.Id === changes.Id);
       for (const property in changes) {
         item[property] = changes[property];
       }
     } else if (list) {
       if (changes?.Id === 0) {
         if (list.length > 0) {
-          changes.Id = list.sort((x, y) => y.Id - x.Id)[0].Id + 1;
+          changes.Id = list.sort((x: any, y: any) => y.Id - x.Id)[0].Id + 1;
         } else {
           changes.Id = 1;
         }
