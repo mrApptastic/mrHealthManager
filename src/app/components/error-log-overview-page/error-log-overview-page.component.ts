@@ -11,7 +11,7 @@ import { ErrorLog } from 'src/app/models/error-log';
 })
 export class ErrorLogOverviewPageComponent implements OnInit {
 
-  dataSource: any[];
+  dataSource: any[] = [];
 
   constructor(private data: DataService, private router: Router) { }
 
@@ -24,7 +24,7 @@ export class ErrorLogOverviewPageComponent implements OnInit {
     this.loadErrorLogs();
   }
 
-  update($event): void {
+  update($event: any): void {
     const error = $event as ErrorLog;
     this.router.navigateByUrl('/ErrorLog/' + error.Id);
   }

@@ -1,5 +1,5 @@
 export class PersonActivity {
-    Name: string;
-    Minutes: number;
-    KCal: number;
+    Name!: string;
+    Minutes!: number;
+    KCal!: number;
 }

@@ -11,18 +11,18 @@ import { DatePipe, DecimalPipe } from '@angular/common';
   providers: [DatePipe, DecimalPipe]
 })
 export class BasicTableComponent implements OnInit, OnChanges {
-  @Input() dataSource: any[];
+  @Input() dataSource!: any[];
   @Input() editable: any;
-  @Input() spinner: string;
-  @Input() spinnerText: string;
+  @Input() spinner!: string;
+  @Input() spinnerText!: string;
   @Output() rowClick = new EventEmitter<any>();
   @Output() dataChange = new EventEmitter<any>();
   searchRequest = new Subject<string>();
-  editAll: boolean;
-  sortOrder: string;
-  sortDirection: boolean;
-  searchField: string;
-  columns: any[];
+  editAll = false;
+  sortOrder = '';
+  sortDirection = false;
+  searchField = '';
+  columns: any[] = [];
   searchFilter = "";
 
   constructor(private datePipe: DatePipe,
@@ -48,7 +48,7 @@ export class BasicTableComponent implements OnInit, OnChanges {
   }
 
   handleSearch(): void {
-    this.searchRequest.next();
+    this.searchRequest.next('');
   }
 
   loadData() {
@@ -92,7 +92,7 @@ export class BasicTableComponent implements OnInit, OnChanges {
     const columns = new Array();
 
     for (const row of data) {
-      for (const [key, value] of Object.entries(row) ) {
+      for (const [key, value] of Object.entries(row) as [string, any][] ) {
         if (columns.some(x => x.Name === key)) {
           const length = value.toString().length;
           const col = columns.find(x => x.Name === key);

@@ -8,14 +8,14 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./activity-page.component.scss']
 })
 export class ActivityPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
     this.reloadData();
   }
 
-  update($event): void {
+  update($event: any): void {
     this.data.setActivity($event);
   }
 

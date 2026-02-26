@@ -11,7 +11,7 @@ import { Plan } from 'src/app/models/plan';
   styleUrls: ['./person-overview-page.component.scss']
 })
 export class PersonOverviewPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
 
   constructor(private data: DataService, private router: Router) { }
 
@@ -24,7 +24,7 @@ export class PersonOverviewPageComponent implements OnInit {
     this.reloadPersons();
   }
 
-  update($event): void {
+  update($event: any): void {
     // alert(JSON.stringify($event));
     const per = $event as Person;
     this.router.navigateByUrl('/Person/' + per.Id);

@@ -1,4 +1,4 @@
 export class PersonConsumption {
-    Name: string;
-    KCal: number;
+    Name!: string;
+    KCal!: number;
 }

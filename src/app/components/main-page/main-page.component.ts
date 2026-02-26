@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Person } from 'src/app/models/person';
 import { Plan } from 'src/app/models/plan';
 
-declare function captainCanvas(canvas, tools, settings): void;
+declare function captainCanvas(canvas: any, tools: any, settings: any): any;
 
 @Component({
   standalone: false,
@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.cpt = new captainCanvas('cpt', 'tls', null);
+      this.cpt = new (captainCanvas as any)('cpt', 'tls', null);
     });
   }
 

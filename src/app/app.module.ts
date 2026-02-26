@@ -29,6 +29,9 @@ import { MessageBoxComponent } from './components/message-box/message-box.compon
 import { SearchBoxComponent } from './components/search-box/search-box.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { AgePipe } from './pipes/age.pipe';
+import { BmiPipe } from './pipes/bmi.pipe';
+import { BmrPipe } from './pipes/bmr.pipe';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { SortPipe } from './pipes/sort.pipe';
     MessageBoxComponent,
     SearchBoxComponent,
     FilterPipe,
-    SortPipe
+    SortPipe,
+    AgePipe,
+    BmiPipe,
+    BmrPipe
   ],
   imports: [
     BrowserModule,

@@ -7,8 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./spinner.component.scss']
 })
 export class SpinnerComponent implements OnInit {
-  @Input() image: string;
-  @Input() text: string;
+  @Input() image!: string;
+  @Input() text!: string;
 
   constructor() { }
 

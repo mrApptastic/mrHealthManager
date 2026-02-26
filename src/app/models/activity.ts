@@ -1,6 +1,6 @@
 export class Activity {
-    Id: number;
-    Name: string;
-    kCal: number;
-    UseKmH: boolean;
+    Id!: number;
+    Name!: string;
+    kCal!: number;
+    UseKmH!: boolean;
 }

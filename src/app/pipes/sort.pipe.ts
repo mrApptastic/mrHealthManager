@@ -8,7 +8,7 @@ export class SortPipe implements PipeTransform {
 
   transform(array: any, sort?: string, desc?: boolean): any[] {
     if (!Array.isArray(array)) {
-      return;
+      return [];
     }
     array.sort((a: any, b: any) => {
       if (sort) {

@@ -9,7 +9,7 @@ import { PersonActivity } from 'src/app/models/person-activity';
 import { PersonConsumption } from 'src/app/models/person-consumption';
 import { CalcService } from 'src/app/services/calc.service';
 import { DataService } from 'src/app/services/data.service';
-declare function dataHussar(element, dataset, settings): void;
+declare function dataHussar(element: any, dataset: any, settings: any): any;
 
 @Component({
   standalone: false,
@@ -18,19 +18,19 @@ declare function dataHussar(element, dataset, settings): void;
   styleUrls: ['./person-page.component.scss']
 })
 export class PersonPageComponent implements OnInit {
-  id: number;
-  person: Person;
-  food: Food[];
-  activities: Activity[];
+  id = 0;
+  person!: Person;
+  food: Food[] = [];
+  activities: Activity[] = [];
   bmiGraph: any;
-  foodToInsert: Food;
-  foodToInsertAmount: number;
-  foodSearch: string;
+  foodToInsert!: Food;
+  foodToInsertAmount = 0;
+  foodSearch = '';
   foodRequest = new Subject<string>();
-  actToInsert: Activity;
-  actToInsertAmount: number;
-  actToInsertKmH: number;
-  actSearch: string;
+  actToInsert!: Activity;
+  actToInsertAmount = 0;
+  actToInsertKmH = 0;
+  actSearch = '';
   actRequest = new Subject<string>();
   searchText = "";
   //     "mr-mr2": "file:../mrMr2/mrMr/dist/mr-mr2",
@@ -61,7 +61,7 @@ export class PersonPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.paramMap.get('Id'), 10);
+    this.id = parseInt(this.route.snapshot.paramMap.get('Id') || '0', 10);
     this.reloadData();
     this.food = this.data.getFood();
     this.activities = this.data.getActivities().filter(x => x.UseKmH !== true);
@@ -79,7 +79,7 @@ export class PersonPageComponent implements OnInit {
     this.drawBMIGraph();
   }
 
-  updateGender(value) {
+  updateGender(value: any) {
     this.person.Gender = value;
     this.data.setPerson(this.person);
   }
@@ -89,11 +89,11 @@ export class PersonPageComponent implements OnInit {
   }
 
   handleFoodSearch(): void {
-    this.foodRequest.next();
+    this.foodRequest.next('');
   }
 
   handleActivitySearch(): void {
-    this.actRequest.next();
+    this.actRequest.next('');
   }
 
   addFood(): void {
@@ -103,9 +103,9 @@ export class PersonPageComponent implements OnInit {
     });
     this.update(this.person);
     this.reloadData();
-    this.foodSearch = null;
-    this.foodToInsert = null;
-    this.foodToInsertAmount = null;
+    this.foodSearch = '';
+    this.foodToInsert = null as any;
+    this.foodToInsertAmount = 0;
   }
 
   addActivity(): void {
@@ -116,16 +116,16 @@ export class PersonPageComponent implements OnInit {
     });
     this.update(this.person);
     this.reloadData();
-    this.actSearch = null;
-    this.actToInsert = null;
-    this.actToInsertAmount = null;
-    this.actToInsertKmH = null;
+    this.actSearch = '';
+    this.actToInsert = null as any;
+    this.actToInsertAmount = 0;
+    this.actToInsertKmH = 0;
   }
 
   addActivityFromStrides(): void {
     const ib = prompt("Add number of strides");
     if (ib && !isNaN(parseInt(ib, 10))) {
-      const distance = (this.person.StrideLength * parseInt(ib, 10)) / 100;
+      const distance = ((this.person.StrideLength || 0) * parseInt(ib, 10)) / 100;
       console.log(distance);
       const amount = 5 / (distance / 1000);
       console.log(amount);
@@ -134,7 +134,7 @@ export class PersonPageComponent implements OnInit {
     }
   }
 
-  deleteFood($event): void {
+  deleteFood($event: any): void {
     const ok = confirm("Are you sure you want to delete this item?");
 
     if (ok) {
@@ -148,7 +148,7 @@ export class PersonPageComponent implements OnInit {
     }
   }
 
-  deleteActivity($event): void {
+  deleteActivity($event: any): void {
     const ok = confirm("Are you sure you want to delete this item?");
 
     if (ok) {
@@ -201,12 +201,12 @@ export class PersonPageComponent implements OnInit {
     }
 
     setTimeout(() => {
-      this.bmiGraph = new dataHussar('bmiGraph', dateArr, {});
+      this.bmiGraph = new (dataHussar as any)('bmiGraph', dateArr, {});
     }, 0);
 
   }
 
-  private addDays(date, days): Date {
+  private addDays(date: any, days: any): Date {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;

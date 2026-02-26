@@ -10,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./planning-overview-page.component.scss']
 })
 export class PlanningOverviewPageComponent implements OnInit {
-  dataSource: any[];
+  dataSource: any[] = [];
 
   constructor(private router: Router, private data: DataService) { }
 
@@ -18,7 +18,7 @@ export class PlanningOverviewPageComponent implements OnInit {
     this.reloadPlans();
   }
 
-  update($event): void {
+  update($event: any): void {
     const pl = $event as Plan;
     this.router.navigateByUrl('/Plan/' + pl.Id);
   }

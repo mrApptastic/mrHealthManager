@@ -11,7 +11,7 @@ import { Component, Input, ChangeDetectorRef, Injector, Type } from '@angular/co
 export class AbstractModelComponent<T = any> implements ControlValueAccessor {
 
   @Input()
-  disabled: boolean;
+  disabled = false;
 
   @Input()
   set value(value: T) {
@@ -23,10 +23,10 @@ export class AbstractModelComponent<T = any> implements ControlValueAccessor {
     return this._value;
   }
 
-  onChange: (value: T) => {};
-  onTouched: () => {};
+  onChange!: (value: T) => {};
+  onTouched!: () => {};
 
-  protected _value: T;
+  protected _value!: T;
   protected cdRef: ChangeDetectorRef;
 
   constructor(public injector: Injector) {
