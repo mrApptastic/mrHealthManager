@@ -6,6 +6,7 @@ import { Person } from './models/person';
 import { CookieService } from './services/cookie.service';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

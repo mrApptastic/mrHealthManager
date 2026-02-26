@@ -5,6 +5,7 @@ import { Person } from 'src/app/models/person';
 import { Plan } from 'src/app/models/plan';
 
 @Component({
+  standalone: false,
   selector: 'app-person-overview-page',
   templateUrl: './person-overview-page.component.html',
   styleUrls: ['./person-overview-page.component.scss']

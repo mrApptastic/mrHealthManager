@@ -12,6 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 declare function dataHussar(element, dataset, settings): void;
 
 @Component({
+  standalone: false,
   selector: 'app-person-page',
   templateUrl: './person-page.component.html',
   styleUrls: ['./person-page.component.scss']

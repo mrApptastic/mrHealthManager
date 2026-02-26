@@ -4,6 +4,7 @@ import { Food } from 'src/app/models/food';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-overview-page',
   templateUrl: './food-overview-page.component.html',
   styleUrls: ['./food-overview-page.component.scss']

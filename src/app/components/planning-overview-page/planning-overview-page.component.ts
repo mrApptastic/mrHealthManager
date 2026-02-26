@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-planning-overview-page',
   templateUrl: './planning-overview-page.component.html',
   styleUrls: ['./planning-overview-page.component.scss']

@@ -7,6 +7,7 @@ import { Plan } from 'src/app/models/plan';
 declare function captainCanvas(canvas, tools, settings): void;
 
 @Component({
+  standalone: false,
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']

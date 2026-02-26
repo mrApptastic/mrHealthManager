@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ErrorLog } from 'src/app/models/error-log';
 
 @Component({
+  standalone: false,
   selector: 'app-error-log-overview-page',
   templateUrl: './error-log-overview-page.component.html',
   styleUrls: ['./error-log-overview-page.component.scss']

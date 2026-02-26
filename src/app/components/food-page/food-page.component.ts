@@ -5,6 +5,7 @@ import { FoodType } from 'src/app/models/food-type';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-page',
   templateUrl: './food-page.component.html',
   styleUrls: ['./food-page.component.scss']

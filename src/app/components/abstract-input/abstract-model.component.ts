@@ -2,6 +2,7 @@ import { ControlValueAccessor } from '@angular/forms';
 import { Component, Input, ChangeDetectorRef, Injector, Type } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-abstract-model',
   templateUrl: './abstract-model.component.html',
   styleUrls: ['./abstract-model.component.scss']

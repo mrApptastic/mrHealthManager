@@ -4,6 +4,7 @@ import { Component, forwardRef, Input, EventEmitter, Output } from '@angular/cor
 import { AbstractModelComponent } from './abstract-model.component';
 
 @Component({
+  standalone: false,
   selector: 'app-abstract-input',
   templateUrl: './abstract-input.component.html',
   styleUrls: ['./abstract-input.component.scss'],

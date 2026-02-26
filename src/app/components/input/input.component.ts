@@ -3,6 +3,7 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
+  standalone: false,
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],

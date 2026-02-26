@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-food-type-page',
   templateUrl: './food-type-page.component.html',
   styleUrls: ['./food-type-page.component.scss']

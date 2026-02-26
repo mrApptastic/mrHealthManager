@@ -4,6 +4,7 @@ import { debounceTime } from 'rxjs/operators';
 import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
+  standalone: false,
   selector: 'app-basic-table',
   templateUrl: './basic-table.component.html',
   styleUrls: ['./basic-table.component.scss'],

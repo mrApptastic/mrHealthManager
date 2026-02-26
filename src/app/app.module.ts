@@ -25,9 +25,10 @@ import { LogoComponent } from './components/logo/logo.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FoodTypePageComponent } from './components/food-type-page/food-type-page.component';
 import { FoodOverviewPageComponent } from './components/food-overview-page/food-overview-page.component';
-import { MrMr2Module } from 'mr-mr2';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -51,14 +52,15 @@ import { SearchBoxComponent } from './components/search-box/search-box.component
     FoodTypePageComponent,
     FoodOverviewPageComponent,
     MessageBoxComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    MrMr2Module
+    FormsModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: ErrorService},

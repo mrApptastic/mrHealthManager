@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-planning-page',
   templateUrl: './planning-page.component.html',
   styleUrls: ['./planning-page.component.scss']

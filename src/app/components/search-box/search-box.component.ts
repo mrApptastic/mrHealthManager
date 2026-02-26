@@ -4,6 +4,7 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
 
 
 @Component({
+  standalone: false,
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
   styleUrls: ['./search-box.component.scss'],
