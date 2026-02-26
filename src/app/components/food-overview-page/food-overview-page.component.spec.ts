@@ -1,4 +1,7 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
 
 import { FoodOverviewPageComponent } from './food-overview-page.component';
 
@@ -8,7 +11,9 @@ describe('FoodOverviewPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoodOverviewPageComponent ]
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      declarations: [ FoodOverviewPageComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

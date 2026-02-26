@@ -39,10 +39,10 @@ export class PersonOverviewPageComponent implements OnInit {
         DateOfBirth: '',
         Gender: false,
         StrideLength: 0,
-        Activities: new Array(),
-        Consumption: new Array(),
-        History: new Array(),
-        Plans: new Array()
+        Activities: [],
+        Consumption: [],
+        History: [],
+        Plans: []
       });
       this.reloadPersons();
   }
@@ -69,7 +69,7 @@ $scope.personStats.BMR = calcService.calculateBMR(
     $scope.personStats.Height
 );
 function drawBMIGraph (width) {
-    var ib = new dataHussar("BMI_Graph",$scope.personStats.History, { width: width });
+    const ib = new dataHussar("BMI_Graph",$scope.personStats.History, { width: width });
 }
 setTimeout(function () {
     drawBMIGraph(document.getElementById("BMI_Box").offsetWidth);
@@ -86,7 +86,7 @@ $scope.foodTypes = dataService.getFoodTypes();
 $scope.food = dataService.getFood();
 $scope.activities = dataService.getActivities();
 $scope.getTotal = function (arr, obj) {
-	var total = 0;
+	const total = 0;
 	for (let i = 0; i < arr.length; i++) {
 		total += parseFloat(arr[i][obj]);
 	}

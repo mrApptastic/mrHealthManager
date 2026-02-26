@@ -89,15 +89,15 @@ export class BasicTableComponent implements OnInit, OnChanges {
   }
 
   private getColumns(data: any[]) {
-    const columns = new Array();
+    const columns: any[] = [];
 
     for (const row of data) {
       for (const [key, value] of Object.entries(row) as [string, any][] ) {
         if (columns.some(x => x.Name === key)) {
           const length = value.toString().length;
           const col = columns.find(x => x.Name === key);
-          if (length > col.Width) {
-            col.width = length;
+          if (col && length > col.Width) {
+            col.Width = length;
           }
         } else {
           if (!Array.isArray(value) &&

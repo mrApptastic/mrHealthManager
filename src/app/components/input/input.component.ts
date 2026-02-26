@@ -21,7 +21,7 @@ export class InputComponent extends AbstractInputComponent {
   cid = Math.ceil(Math.random() * 99999);
 
   @Input()
-  label: string = '';
+  label = '';
 
   get asterix(): string {
     return this.inputRequired ? ' *' : '';

@@ -1,4 +1,6 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { FoodTypePageComponent } from './food-type-page.component';
 
@@ -8,7 +10,9 @@ describe('FoodTypePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FoodTypePageComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [ FoodTypePageComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });

@@ -18,11 +18,11 @@ import { AbstractInputComponent } from '../abstract-input/abstract-input.compone
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchBoxComponent extends AbstractInputComponent implements OnInit {
-  @Input("inputClass") inputClass!: string;
-  @Input("dataSource") dataSource!: any[];
-  @Input("selectLabel") selectLabel!: string;
-  @Input("selectValue") selectValue!: string;
-  @Input("selectClass") selectClass!: string;
+  @Input() inputClass!: string;
+  @Input() dataSource!: any[];
+  @Input() selectLabel!: string;
+  @Input() selectValue!: string;
+  @Input() selectClass!: string;
   cid = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
   hideSearch = true;
 

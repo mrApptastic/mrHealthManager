@@ -23,8 +23,8 @@ export class AbstractModelComponent<T = any> implements ControlValueAccessor {
     return this._value;
   }
 
-  onChange!: (value: T) => {};
-  onTouched!: () => {};
+  onChange!: (value: T) => void;
+  onTouched!: () => void;
 
   protected _value!: T;
   protected cdRef: ChangeDetectorRef;

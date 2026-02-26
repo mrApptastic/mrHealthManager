@@ -186,7 +186,7 @@ export class PersonPageComponent implements OnInit {
 
   drawBMIGraph() {
     const today = new Date();
-    const dateArr = new Array();
+    const dateArr: any[] = [];
     const balance = (this.getTotalActivities() - this.getTotalConsumption()) / 1000;
 
     for (let i = 0; i <= 8; i++) {
@@ -207,7 +207,7 @@ export class PersonPageComponent implements OnInit {
   }
 
   private addDays(date: any, days: any): Date {
-    var result = new Date(date);
+    const result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
   }

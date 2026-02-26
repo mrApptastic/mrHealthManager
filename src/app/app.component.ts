@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
          ]).subscribe(results => {
           this.cookie.accept();
           const dataObj = new Data();
-          dataObj.persons = new Array();
-          dataObj.plans = new Array();
-          dataObj.logs = new Array();
+          dataObj.persons = [];
+          dataObj.plans = [];
+          dataObj.logs = [];
           dataObj.activities = results[0];
           dataObj.foodTypes = results[1];
           dataObj.food = results[2];
@@ -41,11 +41,11 @@ export class AppComponent implements OnInit {
             Weight: 87,
             DateOfBirth: '1991-04-23',
             Gender: false,
-            Activities: new Array(),
-            Consumption: new Array(),
-            History: new Array(),
+            Activities: [],
+            Consumption: [],
+            History: [],
             StrideLength: 75,
-            Plans: new Array()
+            Plans: []
           } as Person);
           this.data.setPerson({
             Id : 0,
@@ -54,11 +54,11 @@ export class AppComponent implements OnInit {
             Weight: 76,
             DateOfBirth: '1989-06-27',
             Gender: true,
-            Activities: new Array(),
-            Consumption: new Array(),
-            History: new Array(),
+            Activities: [],
+            Consumption: [],
+            History: [],
             StrideLength: 65,
-            Plans: new Array()
+            Plans: []
           } as Person);
           this.data.setPerson({
             Id : 1,
@@ -67,11 +67,11 @@ export class AppComponent implements OnInit {
             Weight: 96,
             DateOfBirth: '1961-01-29',
             Gender: false,
-            Activities: new Array(),
-            Consumption: new Array(),
-            History: new Array(),
+            Activities: [],
+            Consumption: [],
+            History: [],
             StrideLength: 90,
-            Plans: new Array()
+            Plans: []
           } as Person);
           this.data.setPerson({
             Id : 5,
@@ -80,11 +80,11 @@ export class AppComponent implements OnInit {
             Weight: 83,
             DateOfBirth: '1980-12-24',
             Gender: false,
-            Activities: new Array(),
-            Consumption: new Array(),
-            History: new Array(),
+            Activities: [],
+            Consumption: [],
+            History: [],
             StrideLength: 75,
-            Plans: new Array()
+            Plans: []
           } as Person);
           this.data.setPerson({
             Id : 0,
@@ -93,11 +93,11 @@ export class AppComponent implements OnInit {
             Weight: 87,
             DateOfBirth: '1991-04-23',
             Gender: false,
-            Activities: new Array(),
-            Consumption: new Array(),
-            History: new Array(),
+            Activities: [],
+            Consumption: [],
+            History: [],
             StrideLength: 75,
-            Plans: new Array()
+            Plans: []
           } as Person);
           console.log(this.data.getDataObject());
           this.loadingData = false;

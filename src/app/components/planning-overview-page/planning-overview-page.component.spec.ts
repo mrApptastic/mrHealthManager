@@ -1,4 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterModule } from '@angular/router';
 
 import { PlanningOverviewPageComponent } from './planning-overview-page.component';
 
@@ -6,9 +9,11 @@ describe('PlanningOverviewPageComponent', () => {
   let component: PlanningOverviewPageComponent;
   let fixture: ComponentFixture<PlanningOverviewPageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlanningOverviewPageComponent ]
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      declarations: [ PlanningOverviewPageComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

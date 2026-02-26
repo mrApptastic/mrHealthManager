@@ -17,16 +17,16 @@ import { AbstractModelComponent } from './abstract-model.component';
 })
 export class AbstractInputComponent extends AbstractModelComponent<string> {
   @Input()
-  readonly: boolean = false;
+  readonly = false;
 
   @Input()
-  required: boolean = false;
+  required = false;
 
   @Input()
-  placeholder: string = '';
+  placeholder = '';
 
   @Input()
-  type: string = 'text';
+  type = 'text';
 
   @Output()
   onBlur = new EventEmitter<void>();
